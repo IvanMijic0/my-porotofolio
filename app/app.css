@@ -1,15 +1,24 @@
 @import "tailwindcss";
 
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 100 900;
+	font-stretch: 75% 125%;
+	font-display: swap;
+	src: url("/fonts/roboto.woff2") format("woff2");
+}
+
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-sans: "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+		Arial, "Noto Sans", "Liberation Sans", sans-serif;
+	--breakpoint-xxs: 280px;
+	--breakpoint-xs: 400px;
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+	@media (prefers-color-scheme: dark) {
+		color-scheme: dark;
+	}
 }
