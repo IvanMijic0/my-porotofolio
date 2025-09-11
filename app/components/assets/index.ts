@@ -1,3 +1,17 @@
 export { default as ButtonSquircleContainer } from './ButtonSquircleContainer';
 export { default as WideSquircleContainer } from './WideSquircleContainer';
 export { default as TallSquircleContainer } from './TallSquircleContainer';
+export { default as Elasticsearch } from './Elasticsearch';
+export { default as Springboot } from './Springboot';
+export { default as Linkedin } from './Linkedin';
+export { default as Redpanda } from './Redpanda';
+export { default as Services } from './Services';
+export { default as Origami } from './Origami';
+export { default as Laravel } from './Laravel';
+export { default as Hadoop } from './Hadoop';
+export { default as Person } from './Person';
+export { default as React } from './React';
+export { default as Phone } from './Phone';
+export { default as Mail } from './Mail';
+export { default as Blog } from './Blog';
+export { default as Home } from './Home';

@@ -12,8 +12,20 @@
 @theme {
 	--font-sans: "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
 		Arial, "Noto Sans", "Liberation Sans", sans-serif;
+
+	--color-accent: #FF601C;
+	--color-primary: #FCFCFC;
+	--color-unfocus: #BDBDBD;
+
 	--breakpoint-xxs: 280px;
 	--breakpoint-xs: 400px;
+}
+
+@layer base {
+	html {
+		font-family: var(--font-sans);
+		color: var(--color-primary)
+	}
 }
 
 html,

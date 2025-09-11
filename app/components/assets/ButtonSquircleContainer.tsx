@@ -90,7 +90,7 @@ const ButtonSquircleContainer = ({
 			}}
 			onClick={onClick}
 			className={clsx(
-				"relative inline-block overflow-hidden select-none outline-none",
+				"relative inline-block hover:cursor-pointer overflow-hidden select-none outline-none",
 				"focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-0 rounded-[14%]",
 				className
 			)}
