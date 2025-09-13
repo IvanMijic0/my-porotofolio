@@ -1,21 +1,18 @@
-import { memo, type ReactNode, type JSX } from "react";
+import { memo, type ReactNode, type JSX, type SVGProps } from "react";
 import clsx from "clsx";
 import {
-	Blog,
 	ButtonSquircleContainer,
-	Home as HomeIcon,
-	Origami,
-	Person,
-	Phone,
-	Services,
+	MobileSquircleContainer,
 	TallSquircleContainer,
 	WideSquircleContainer,
 } from "./assets";
+import { useIsMobile } from "~/hooks";
+import { SiteConfig } from "~/config";
 
 type NavItem = {
 	label: string;
 	href: string;
-	icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+	icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
 	accent?: boolean;
 	active?: boolean;
 };
@@ -33,45 +30,70 @@ const TwoColPage = memo(function TwoColPage({
 	right,
 	className,
 	origin = import.meta.env.VITE_BASE_URL,
-	nav = [
-		{ label: "Home", href: "/en", icon: HomeIcon, active: true },
-		{ label: "View Work", href: "/en/photography", icon: Origami, accent: true },
-		{ label: "Let's Connect", href: "/en/contact", icon: Phone, accent: true },
-		{ label: "Services", href: "/en/services", icon: Services },
-		{ label: "About", href: "/en/about-me", icon: Person },
-		{ label: "Blog", href: "/en/blog", icon: Blog },
-	],
 }: Props) {
+	const isMobile = useIsMobile('lg');
+
 	return (
 		<>
 			<aside
-				className="col-span-5"
+				className="
+					    col-span-12 order-2 lg:order-1 lg:col-span-5 relative
+					    before:content-[''] before:absolute before:inset-x-0 before:top-0
+					    before:h-20 before:bg-gradient-to-b before:from-black before:to-transparent
+					    after:content-[''] after:absolute after:inset-0 after:bg-black/30
+					    after:-z-10 before:-z-10
+					    lg:before:hidden lg:after:hidden
+					  "
 				aria-labelledby="aside-title"
 			>
-				<TallSquircleContainer>
-					<section className={clsx("min-w-0 w-full h-full", className)}>
+				{!isMobile
+					? <TallSquircleContainer>
+						<section className={clsx("min-w-0 w-full h-full", className)}>
+							{left}
+						</section>
+					</TallSquircleContainer>
+					: <section className={clsx("min-w-0 w-full", className)}>
 						{left}
 					</section>
-				</TallSquircleContainer>
+
+				}
 			</aside>
-
-			<main className="col-span-7 px-12 py-6 h-full flex flex-col justify-between gap-2 relative min-h-0 overflow-hidden">
-				<WideSquircleContainer>
-					<div className="relative z-10 w-full h-full flex justify-center items-center">
-						{right}
+			<main
+				className="
+					    col-span-12 order-1 py-6
+					    lg:order-2 lg:col-span-7 lg:px-12 lg:py-6
+					    flex lg:flex-col justify-between gap-2
+					    relative min-h-0 overflow-hidden
+					    after:content-[''] after:absolute after:inset-x-0 after:bottom-0
+					    after:h-20 after:bg-gradient-to-t after:from-black after:to-transparent
+					    lg:after:hidden
+					  "
+			>
+				{!isMobile
+					? <WideSquircleContainer>
+						<div className="relative z-10 w-full h-full flex justify-center items-center">
+							{right}
+						</div>
+					</WideSquircleContainer>
+					:
+					<div
+						className="-ml-8 pr-8 max-w-[calc(100%+1rem)]"
+					>
+						<MobileSquircleContainer className="block w-[341px] max-w-full">
+							<div className="relative z-10 w-full h-full">
+								{right}
+							</div>
+						</MobileSquircleContainer>
 					</div>
-				</WideSquircleContainer>
 
-				<nav
-					className="mt-6"
-					aria-label="Primary"
-				>
+				}
+				{!isMobile && <nav className="mt-6" aria-label="Primary">
 					<ul className="grid grid-cols-3 w-1/2 gap-y-12 gap-x-6 pl-24">
-						{nav.map(({ label, href, icon: Icon, accent, active }) => (
+						{SiteConfig.navElements.map(({ label, href, icon: Icon, accent, active }) => (
 							<li key={label} className="flex flex-col gap-6 items-center">
 								<ButtonSquircleContainer fill={accent ? "#FF601C80" : undefined}>
 									<a
-										href={href}
+										href={`${origin}${href}`}
 										aria-current={active ? "page" : undefined}
 										className="inline-flex items-center justify-center"
 									>
@@ -108,15 +130,10 @@ const TwoColPage = memo(function TwoColPage({
 						))}
 					</ul>
 				</nav>
-				<footer className="w-1/2 pl-30 flex justify-center">
-					<small className="text-sm text-unfocus">
-						© {new Date().getFullYear()} Ivan Mijić. All rights reserved.
-					</small>
-				</footer>
-
+				}
 				<div
 					aria-hidden
-					className="pointer-events-none fixed right-10 bottom-0 z-0"
+					className="pointer-events-none absolute lg:fixed -right-10 lg:right-10 bottom-0 z-0"
 				>
 					<img
 						src="/ivan_mijic.webp"
@@ -125,38 +142,9 @@ const TwoColPage = memo(function TwoColPage({
 						loading="lazy"
 						decoding="async"
 						fetchPriority="low"
-						className="h-[calc(50vh-4rem)] w-auto select-none"
+						className="h-[25rem] lg:h-[calc(50vh-4rem)] object-cover w-auto select-none"
 					/>
 				</div>
-
-				<script type="application/ld+json" suppressHydrationWarning>
-					{JSON.stringify({
-						"@context": "https://schema.org",
-						"@type": "WebSite",
-						name: "Ivan Mijić — Portfolio",
-						url: origin,
-						inLanguage: ["en", "bs"],
-						potentialAction: {
-							"@type": "SearchAction",
-							target: `${origin}/search?q={query}`,
-							"query-input": "required name=query",
-						},
-					})}
-				</script>
-
-				<script type="application/ld+json" suppressHydrationWarning>
-					{JSON.stringify({
-						"@context": "https://schema.org",
-						"@type": "SiteNavigationElement",
-						name: "Primary Navigation",
-						hasPart: nav.map((n, i) => ({
-							"@type": "WebPage",
-							name: n.label,
-							url: `${origin}${n.href}`,
-							position: i + 1,
-						})),
-					})}
-				</script>
 			</main>
 		</>
 	);

@@ -7,65 +7,78 @@ const HomeLeft = memo(function HomeLeft() {
 		<section
 			id="expertise"
 			aria-labelledby="expertise-title"
-			className="w-full flex flex-col gap-12 justify-start py-36 px-10 items-start"
+			className="w-full flex flex-col gap-12 justify-start lg:py-36 pt-8 pb-12 px-4 lg:px-10 items-start"
 		>
 			<h2 id="expertise-title" className="text-4xl">
-				Expertise:
+				Expertise
 			</h2>
+			<div className='w-full flex justify-center lg:block'>
+				<ul className="lg:px-20 grid grid-cols-2 gap-12 lg:gap-28">
+					<li>
+						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
+							<Laravel
+								className="w-20 h-20 lg:w-24 lg:h-24 text-[#FF2D20]"
+								aria-hidden="true"
+								focusable="false"
+							/>
+							<figcaption className="font-light text-lg lg:text-2xl">
+								Laravel
+							</figcaption>
+						</figure>
+					</li>
 
-			<ul className="px-20 grid grid-cols-2 gap-28">
-				<li>
-					<figure className="flex items-center gap-8 flex-col">
-						<Laravel
-							className="w-24 h-24 text-[#FF2D20]"
-							aria-hidden="true"
-							focusable="false"
-						/>
-						<figcaption className="font-light text-2xl">Laravel</figcaption>
-					</figure>
-				</li>
+					<li>
+						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
+							<Springboot
+								className="w-20 h-20 lg:w-24 lg:h-24"
+								aria-hidden="true" focusable="false" />
+							<figcaption className="font-light text-lg lg:text-2xl whitespace-nowrap">
+								Spring Boot
+							</figcaption>
+						</figure>
+					</li>
 
-				<li>
-					<figure className="flex items-center gap-8 flex-col">
-						<Springboot className="w-24 h-24" aria-hidden="true" focusable="false" />
-						<figcaption className="font-light text-2xl whitespace-nowrap">
-							Spring Boot
-						</figcaption>
-					</figure>
-				</li>
+					<li>
+						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
+							<React
+								className="w-20 h-20 lg:w-24 lg:h-24"
+								aria-hidden="true" focusable="false" />
+							<figcaption className="font-light text-lg lg:text-2xl">React</figcaption>
+						</figure>
+					</li>
 
-				<li>
-					<figure className="flex items-center gap-8 flex-col">
-						<React className="w-24 h-24" aria-hidden="true" focusable="false" />
-						<figcaption className="font-light text-2xl">React</figcaption>
-					</figure>
-				</li>
+					<li>
+						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
+							<Redpanda
+								className="w-20 h-20 lg:w-24 lg:h-24"
+								aria-hidden="true" focusable="false" />
+							<figcaption className="font-light text-lg lg:text-2xl whitespace-nowrap">
+								Redpanda
+							</figcaption>
+						</figure>
+					</li>
 
-				<li>
-					<figure className="flex items-center gap-8 flex-col">
-						<Redpanda className="w-24 h-24" aria-hidden="true" focusable="false" />
-						<figcaption className="font-light text-2xl whitespace-nowrap">
-							Redpanda
-						</figcaption>
-					</figure>
-				</li>
+					<li>
+						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
+							<Hadoop
+								className="w-20 h-20 lg:w-24 lg:h-24"
+								aria-hidden="true" focusable="false" />
+							<figcaption className="font-light text-lg lg:text-2xl">Hadoop</figcaption>
+						</figure>
+					</li>
 
-				<li>
-					<figure className="flex items-center gap-8 flex-col">
-						<Hadoop className="w-24 h-24" aria-hidden="true" focusable="false" />
-						<figcaption className="font-light text-2xl">Hadoop</figcaption>
-					</figure>
-				</li>
-
-				<li>
-					<figure className="flex items-center gap-8 flex-col">
-						<Elasticsearch className="w-24 h-24" aria-hidden="true" focusable="false" />
-						<figcaption className="font-light text-2xl whitespace-nowrap">
-							Elasticsearch
-						</figcaption>
-					</figure>
-				</li>
-			</ul>
+					<li>
+						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
+							<Elasticsearch
+								className="w-14 h-20 lg:w-24 lg:h-24"
+								aria-hidden="true" focusable="false" />
+							<figcaption className="font-light text-lg lg:text-2xl whitespace-nowrap">
+								Elasticsearch
+							</figcaption>
+						</figure>
+					</li>
+				</ul>
+			</div>
 		</section>
 	);
 });
@@ -74,23 +87,23 @@ const HomeLeft = memo(function HomeLeft() {
 const HomeRight = memo(function HomeRight() {
 	return (
 		<section
-			className="flex flex-col gap-7 w-full px-28"
+			className="flex flex-col lg:gap-7 w-full px-12 py-10 lg:px-28"
 			aria-labelledby="hero-title"
 		>
-			<h2 className="text-3xl font-light pl-1">Ivan Mijić</h2>
+			<h2 className="text-lg lg:text-3xl font-extralight lg:font-light lg:pl-1">Ivan Mijić</h2>
 			<h1
 				id="hero-title"
-				className="w-full font-bold flex flex-col gap-4 leading-tight"
+				className="w-full font-semibold lg:font-bold flex flex-col lg:gap-4 leading-tight"
 			>
-				<span className="text-7xl">
+				<span className="text-5xl lg:text-7xl">
 					<span className="text-accent">Logic</span>-Driven
 				</span>
-				<span className="text-7xl">
+				<span className="text-5xl lg:text-7xl">
 					Design-<span className="text-accent">Conscious</span>
 				</span>
-				<span className="text-6xl">Engineering done right</span>
+				<span className="text-3xl lg:text-6xl w-40 lg:w-auto font-light lg:font-bold">Engineering done right</span>
 			</h1>
-			<h3 className="text-3xl font-light pl-1">
+			<h3 className="text-md mt-4 lg:mt-0 lg:text-3xl w-28 lg:w-auto font-extralight lg:font-light lg:pl-1">
 				Medior Software Engineer with CTO Experience
 			</h3>
 		</section>

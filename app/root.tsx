@@ -24,6 +24,7 @@ export const Layout = ({ children }: PropsWithChildren) => (
 			<Links />
 		</head>
 		<body>
+			<div id="modal-root"></div>
 			{children}
 			<ScrollRestoration />
 			<Scripts />

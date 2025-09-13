@@ -3,7 +3,7 @@ import { memo } from "react";
 
 const GridShell = memo(function GridShell() {
 	return (
-		<div className="grid h-full w-full grid-cols-12 gap-2">
+		<div className="grid w-full lg:grid-cols-12 gap-0 lg:gap-2 overflow-y-auto">
 			<Outlet />
 		</div>
 	);
