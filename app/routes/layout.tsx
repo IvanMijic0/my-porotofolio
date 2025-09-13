@@ -36,7 +36,7 @@ const Layout = () => {
 							initial={{ scale: 0.9 }}
 							animate={{ scale: [0.9, 1, 0.9] }}
 							transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }} 						>
-							<Logo className="w-20 h-20" />
+							<Logo className="w-20 h-20 lg:w-28 lg:h-28" />
 						</motion.div>
 					</motion.div>
 				)}
