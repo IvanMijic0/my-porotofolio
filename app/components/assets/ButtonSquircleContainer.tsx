@@ -37,7 +37,7 @@ const ButtonSquircleContainer = ({
 	aspectRatio = NATIVE_RATIO,
 	fit = "contain",
 	fill = "#252525",
-	fillOpacity = 0.6,
+	fillOpacity = 0.8,
 	stroke = "#424242",
 	strokeWidth = 1,
 	onClick,

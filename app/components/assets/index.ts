@@ -10,6 +10,7 @@ export { default as ArrowDown } from './ArrowDown';
 export { default as Linkedin } from './Linkedin';
 export { default as Redpanda } from './Redpanda';
 export { default as Services } from './Services';
+export { default as ArrowUp } from './ArrowUp';
 export { default as Origami } from './Origami';
 export { default as Laravel } from './Laravel';
 export { default as Hadoop } from './Hadoop';

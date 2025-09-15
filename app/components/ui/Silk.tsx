@@ -113,7 +113,7 @@ const SilkPlane = forwardRef<Mesh, SilkPlaneProps>(({ uniforms }, forwardedRef) 
 });
 SilkPlane.displayName = "SilkPlane";
 
-export type SilkProps = {
+type SilkProps = {
 	speed?: number;
 	scale?: number;
 	color?: string;
@@ -123,7 +123,7 @@ export type SilkProps = {
 	className?: string;
 };
 
-const SilkImpl: React.FC<SilkProps> = ({
+const SilkImpl = ({
 	speed = 5,
 	scale = 1,
 	color = "#7B7481",
@@ -131,7 +131,7 @@ const SilkImpl: React.FC<SilkProps> = ({
 	rotation = 0,
 	backgroundMode = false,
 	className,
-}) => {
+}: SilkProps) => {
 	const meshRef = useRef<Mesh | null>(null);
 
 	const uniforms = useRef<SilkUniforms>({
@@ -153,32 +153,40 @@ const SilkImpl: React.FC<SilkProps> = ({
 	}, [color]);
 
 	const containerClass = useMemo(
-		() =>
-			(backgroundMode ? "pointer-events-none -z-10 absolute inset-0" : "") +
-			(className ? ` ${className}` : ""),
+		() => (backgroundMode ? "pointer-events-none -z-10 absolute inset-0" : "") + (className ? ` ${className}` : ""),
 		[backgroundMode, className]
+	);
+
+	const glOptions = useMemo(
+		() => ({
+			antialias: false,
+			depth: false,
+			stencil: false,
+			alpha: true,
+			premultipliedAlpha: true,
+			powerPreference: "high-performance" as const,
+			preserveDrawingBuffer: false,
+		}),
+		[]
 	);
 
 	return (
 		<div className={containerClass}>
-			<Canvas
-				dpr={[1, 1.5]}
-				frameloop="always"
-				gl={{
-					antialias: false,
-					depth: false,
-					stencil: false,
-					alpha: true,
-					premultipliedAlpha: true,
-					powerPreference: "high-performance",
-					preserveDrawingBuffer: false,
-				}}
-			>
+			<Canvas dpr={[1, 1.5]} frameloop="always" gl={glOptions}>
 				<SilkPlane ref={meshRef} uniforms={uniforms} />
 			</Canvas>
 		</div>
 	);
 };
 
-const Silk = memo(SilkImpl);
+const areEqual = (prev: SilkProps, next: SilkProps) =>
+	prev.speed === next.speed &&
+	prev.scale === next.scale &&
+	prev.color === next.color &&
+	prev.noiseIntensity === next.noiseIntensity &&
+	prev.rotation === next.rotation &&
+	prev.backgroundMode === next.backgroundMode &&
+	prev.className === next.className;
+
+const Silk = memo(SilkImpl, areEqual);
 export default Silk;

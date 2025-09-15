@@ -1,4 +1,5 @@
 import { memo, type ReactNode, type JSX, type SVGProps } from "react";
+import { Link } from "react-router";
 import clsx from "clsx";
 import {
 	ButtonSquircleContainer,
@@ -8,6 +9,7 @@ import {
 } from "./assets";
 import { useIsMobile } from "~/hooks";
 import { SiteConfig } from "~/config";
+import { useLocation } from "react-router";
 
 type NavItem = {
 	label: string;
@@ -29,9 +31,9 @@ const TwoColPage = memo(function TwoColPage({
 	left,
 	right,
 	className,
-	origin = import.meta.env.VITE_BASE_URL,
 }: Props) {
 	const isMobile = useIsMobile('lg');
+	const location = useLocation();
 
 	return (
 		<>
@@ -40,21 +42,21 @@ const TwoColPage = memo(function TwoColPage({
 					    col-span-12 order-2 lg:order-1 lg:col-span-5 relative
 					    before:content-[''] before:absolute before:inset-x-0 before:top-0
 					    before:h-20 before:bg-gradient-to-b before:from-black before:to-transparent
-					    after:content-[''] after:absolute after:inset-0 after:bg-black/30
+					    after:content-[''] after:absolute after:inset-0 after:bg-black/50
 					    after:-z-10 before:-z-10
 					    lg:before:hidden lg:after:hidden
-					  "
+					"
 				aria-labelledby="aside-title"
 			>
 				{!isMobile
 					? <TallSquircleContainer>
-						<section className={clsx("min-w-0 w-full h-full", className)}>
+						<div className={clsx("min-w-0 w-full h-screen", className)}>
 							{left}
-						</section>
+						</div>
 					</TallSquircleContainer>
-					: <section className={clsx("min-w-0 w-full", className)}>
+					: <div className={clsx("min-w-0 w-full", className)}>
 						{left}
-					</section>
+					</div>
 
 				}
 			</aside>
@@ -89,45 +91,54 @@ const TwoColPage = memo(function TwoColPage({
 				}
 				{!isMobile && <nav className="mt-6" aria-label="Primary">
 					<ul className="grid grid-cols-3 w-1/2 gap-y-12 gap-x-6 pl-24">
-						{SiteConfig.navElements.map(({ label, href, icon: Icon, accent, active }) => (
-							<li key={label} className="flex flex-col gap-6 items-center">
-								<ButtonSquircleContainer fill={accent ? "#FF601C80" : undefined}>
-									<a
-										href={`${origin}${href}`}
-										aria-current={active ? "page" : undefined}
+						{SiteConfig.navElements.map(({ label, href, icon: Icon, accent }) => {
+							const isActive = location.pathname === href;
+
+							return (
+								<li key={label} className="flex flex-col gap-6 items-center">
+									<Link
+										to={href}
+										aria-current={isActive ? "page" : undefined}
 										className="inline-flex items-center justify-center"
 									>
-										<Icon
-											className={clsx(
-												"w-8 h-8",
-												accent ? "text-primary" : "text-unfocus"
-											)}
-											aria-hidden="true"
-											focusable="false"
-										/>
-										<span className="sr-only">{label}</span>
-									</a>
-								</ButtonSquircleContainer>
-								<p
-									className={clsx(
-										"text-lg text-center",
-										accent ? "text-accent/80" : "text-unfocus"
-									)}
-								>
-									{label.includes("Connect") ? (
-										<>
-											Let&apos;s<br />Connect
-										</>
-									) : label.includes("Work") ? (
-										<>
-											View<br />Work
-										</>
-									) : (
-										label
-									)}
-								</p>
-							</li>
-						))}
+										<ButtonSquircleContainer
+											fillOpacity={isActive ? 1 : accent ? 0.8 : 1}
+											fill={isActive ? "#FCFCFC" : accent ? "#FF601C80" : undefined}
+										>
+											<Icon
+												className={clsx(
+													"w-8 h-8",
+													isActive
+														? "text-black"
+														: accent
+															? "text-primary"
+															: "text-unfocus"
+												)}
+												aria-hidden="true"
+												focusable="false"
+											/>
+											<span className="sr-only">{label}</span>
+										</ButtonSquircleContainer>
+									</Link>
+									<p
+										className="text-lg text-center text-unfocus"
+
+									>
+										{label.includes("Connect") ? (
+											<>
+												Let&apos;s<br />Connect
+											</>
+										) : label.includes("Work") ? (
+											<>
+												View<br />Work
+											</>
+										) : (
+											label
+										)}
+									</p>
+								</li>
+							);
+						})}
 					</ul>
 				</nav>
 				}
