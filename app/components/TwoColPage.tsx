@@ -42,7 +42,7 @@ const TwoColPage = memo(function TwoColPage({
 					    col-span-12 order-2 lg:order-1 lg:col-span-5 relative
 					    before:content-[''] before:absolute before:inset-x-0 before:top-0
 					    before:h-20 before:bg-gradient-to-b before:from-black before:to-transparent
-					    after:content-[''] after:absolute after:inset-0 after:bg-black/50
+					    after:content-[''] after:absolute after:inset-0 after:bg-black/30
 					    after:-z-10 before:-z-10
 					    lg:before:hidden lg:after:hidden
 					"
@@ -73,7 +73,7 @@ const TwoColPage = memo(function TwoColPage({
 			>
 				{!isMobile
 					? <WideSquircleContainer>
-						<div className="relative z-10 w-full h-full flex justify-center items-center">
+						<div className="relative z-10 w-full flex justify-center items-center">
 							{right}
 						</div>
 					</WideSquircleContainer>

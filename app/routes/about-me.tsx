@@ -20,7 +20,7 @@ const AboutLeft = memo(function AboutLeft() {
 					depth with leadership and strategy.
 				</p>
 
-				<h3 className="text-2xl lg:text-3xl font-bold">My technical stack includes:</h3>
+				<h3 className="text-3xl lg:text-4xl font-bold">My technical stack includes:</h3>
 
 				<p className="text-2xl lg:text-3xl font-bold">
 					Backend Development:{" "}
@@ -69,7 +69,7 @@ const AboutRight = memo(function AboutRight() {
 	return (
 		<section
 			aria-labelledby="about-title"
-			className="flex flex-col lg:gap-7 w-full px-12 py-12 lg:px-28"
+			className="flex flex-col lg:gap-7 w-full h-full justify-between px-12 py-12 lg:px-28"
 		>
 			<h1 id="about-title" className="text-5xl lg:text-7xl font-bold leading-tight">
 				<span className="flex flex-col gap-4 text-4xl leading-tight lg:hidden">
@@ -116,51 +116,6 @@ export const meta = ({ params }: Route.MetaArgs) => {
 
 	const ogImage = `${ORIGIN}/og/about.jpg`;
 	const locale = lang === "bs" ? "bs_BA" : "en_US";
-
-	const personJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "Person",
-		name: "Ivan Mijić",
-		url,
-		jobTitle: "Software Engineer",
-	};
-
-	const webPageJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "WebPage",
-		name: title,
-		url,
-		inLanguage: lang,
-		description,
-		isPartOf: {
-			"@type": "WebSite",
-			name: "Ivan Mijić Portfolio",
-			url: ORIGIN,
-		},
-		breadcrumb: {
-			"@id": `${url}#breadcrumb`,
-		},
-	};
-
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		"@id": `${url}#breadcrumb`,
-		itemListElement: [
-			{
-				"@type": "ListItem",
-				position: 1,
-				name: lang === "bs" ? "Početna" : "Home",
-				item: `${ORIGIN}/${lang}`,
-			},
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: lang === "bs" ? "O meni" : "About Me",
-				item: url,
-			},
-		],
-	};
 
 	return [
 		{ charSet: "utf-8" },

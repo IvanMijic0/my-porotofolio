@@ -1,34 +1,59 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Outlet, useLocation } from "react-router";
+import { Outlet, useLocation, Link } from "react-router";
 import { HamburgerButton, Modal, ScrollUpOnMobile, Silk } from "~/components";
 import { useIsMobile } from "~/hooks";
 import { SiteConfig } from "~/config";
 import clsx from "clsx";
 import { ButtonSquircleContainer, Logo } from "~/components/assets";
-import { Link } from "react-router";
+
+const LOADER_MS = 800;
 
 const Layout = () => {
 	const isMobile = useIsMobile("lg");
-	const [isModalOpen, setModalOpen] = useState(false);
-	const [isLoading, setIsLoading] = useState(true);
-
 	const location = useLocation();
+
+	const [isModalOpen, setModalOpen] = useState(false);
 	const openModal = () => setModalOpen(true);
 	const closeModal = () => setModalOpen(false);
 
+	const [isLoading, setIsLoading] = useState(true);
+	const [visiblePath, setVisiblePath] = useState(location.pathname);
+
 	useEffect(() => {
-		const timer = setTimeout(() => setIsLoading(false), 800);
-		return () => clearTimeout(timer);
+		const t = setTimeout(() => setIsLoading(false), LOADER_MS);
+		return () => clearTimeout(t);
 	}, []);
+
+	useEffect(() => {
+		if (isModalOpen) setModalOpen(false);
+	}, [location.pathname]);
+
+	useEffect(() => {
+		if (!isMobile) {
+			setVisiblePath(location.pathname);
+			return;
+		}
+
+		if (location.pathname !== visiblePath) {
+			setIsLoading(true);
+			const t = setTimeout(() => {
+				setVisiblePath(location.pathname);
+				setIsLoading(false);
+			}, LOADER_MS);
+			return () => clearTimeout(t);
+		}
+	}, [location.pathname, visiblePath, isMobile]);
+
+	const shouldRenderOutlet = !isMobile || (!isLoading && location.pathname === visiblePath);
 
 	return (
 		<div className="relative w-screen h-screen">
 			<AnimatePresence>
-				{isLoading && (
+				{isMobile && isLoading && (
 					<motion.div
 						key="loader"
-						className="fixed inset-0 z-[99999] flex items-center justify-center bg-black block lg:hidden"
+						className="fixed inset-0 z-[99999] flex items-center justify-center bg-black lg:hidden"
 						initial={{ opacity: 1 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
@@ -44,6 +69,7 @@ const Layout = () => {
 					</motion.div>
 				)}
 			</AnimatePresence>
+
 			<div className="pointer-events-none fixed inset-0 -z-10">
 				<Silk
 					backgroundMode
@@ -61,33 +87,33 @@ const Layout = () => {
 						<HamburgerButton onClick={openModal} />
 					</div>
 				)}
-				<Outlet />
+
+				{shouldRenderOutlet ? <Outlet /> : null}
 				<ScrollUpOnMobile />
 			</div>
+
 			<Modal isOpen={isModalOpen} onClose={closeModal}>
-				<ul className="grid grid-cols-3 w-1/2 gap-y-12 gap-x-6 pl-24">
+				<ul className="grid grid-cols-3 gap-y-12 gap-x-10 w-full">
 					{SiteConfig.navElements.map(({ label, href, icon: Icon, accent }) => {
 						const isActive = location.pathname === href;
-
 						return (
-							<li key={label} className="flex flex-col gap-6 items-center">
+							<li key={label} className="flex flex-col gap-4 items-center">
 								<Link
 									to={href}
 									aria-current={isActive ? "page" : undefined}
 									className="inline-flex items-center justify-center"
+									onClick={closeModal}
 								>
 									<ButtonSquircleContainer
+										width={50}
+										height={50}
 										fillOpacity={isActive ? 1 : accent ? 0.8 : 1}
 										fill={isActive ? "#FCFCFC" : accent ? "#FF601C80" : undefined}
 									>
 										<Icon
 											className={clsx(
-												"w-8 h-8",
-												isActive
-													? "text-black"
-													: accent
-														? "text-primary"
-														: "text-unfocus"
+												"w-6 h-6",
+												isActive ? "text-black" : accent ? "text-primary" : "text-unfocus"
 											)}
 											aria-hidden="true"
 											focusable="false"
@@ -95,17 +121,7 @@ const Layout = () => {
 										<span className="sr-only">{label}</span>
 									</ButtonSquircleContainer>
 								</Link>
-
-								<p
-									className={clsx(
-										"text-lg text-center",
-										isActive
-											? "text-black"
-											: accent
-												? "text-accent/80"
-												: "text-unfocus"
-									)}
-								>
+								<p className="text-sm text-center text-unfocus">
 									{label.includes("Connect") ? (
 										<>
 											Let&apos;s<br />Connect

@@ -40,7 +40,7 @@ const ScrollDownButton = () => {
 			whileHover={{ scale: 1.1 }}
 			whileTap={{ scale: 0.9 }}
 			onClick={handleClick}
-			className="mt-12 flex items-center justify-center w-12 h-12 rounded-full border lg:hidden"
+			className="flex items-center justify-center w-12 h-12 rounded-full border lg:hidden"
 			aria-label="Scroll down"
 		>
 			<ArrowDown className="w-6 h-6" />
