@@ -91,11 +91,12 @@ const Layout = () => {
 				{shouldRenderOutlet ? <Outlet /> : null}
 				<ScrollUpOnMobile />
 			</div>
-
 			<Modal isOpen={isModalOpen} onClose={closeModal}>
 				<ul className="grid grid-cols-3 gap-y-12 gap-x-10 w-full">
 					{SiteConfig.navElements.map(({ label, href, icon: Icon, accent }) => {
 						const isActive = location.pathname === href;
+						const isSpecial = (label.includes("Connect") || label.includes("Work")) && isActive;
+
 						return (
 							<li key={label} className="flex flex-col gap-4 items-center">
 								<Link
@@ -108,12 +109,26 @@ const Layout = () => {
 										width={50}
 										height={50}
 										fillOpacity={isActive ? 1 : accent ? 0.8 : 1}
-										fill={isActive ? "#FCFCFC" : accent ? "#FF601C80" : undefined}
+										fill={
+											isSpecial
+												? "#FF601C"
+												: isActive
+													? "#FCFCFC"
+													: accent
+														? "#FF601C80"
+														: undefined
+										}
 									>
 										<Icon
 											className={clsx(
 												"w-6 h-6",
-												isActive ? "text-black" : accent ? "text-primary" : "text-unfocus"
+												isSpecial
+													? "text-white"
+													: isActive
+														? "text-black"
+														: accent
+															? "text-primary"
+															: "text-unfocus"
 											)}
 											aria-hidden="true"
 											focusable="false"
@@ -121,7 +136,18 @@ const Layout = () => {
 										<span className="sr-only">{label}</span>
 									</ButtonSquircleContainer>
 								</Link>
-								<p className="text-sm text-center text-unfocus">
+								<p
+									className={clsx(
+										"text-sm text-center",
+										isSpecial
+											? "text-accent"
+											: isActive
+												? "text-[#BDBDBD]"
+												: accent
+													? "text-accent/80"
+													: "text-unfocus"
+									)}
+								>
 									{label.includes("Connect") ? (
 										<>
 											Let&apos;s<br />Connect

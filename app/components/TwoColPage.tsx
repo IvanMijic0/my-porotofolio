@@ -93,6 +93,7 @@ const TwoColPage = memo(function TwoColPage({
 					<ul className="grid grid-cols-3 w-1/2 gap-y-12 gap-x-6 pl-24">
 						{SiteConfig.navElements.map(({ label, href, icon: Icon, accent }) => {
 							const isActive = location.pathname === href;
+							const isSpecial = (label.includes("Connect") || label.includes("Work")) && isActive;
 
 							return (
 								<li key={label} className="flex flex-col gap-6 items-center">
@@ -103,16 +104,26 @@ const TwoColPage = memo(function TwoColPage({
 									>
 										<ButtonSquircleContainer
 											fillOpacity={isActive ? 1 : accent ? 0.8 : 1}
-											fill={isActive ? "#FCFCFC" : accent ? "#FF601C80" : undefined}
+											fill={
+												isSpecial
+													? "#FF601C" // your accent color
+													: isActive
+														? "#FCFCFC"
+														: accent
+															? "#FF601C80"
+															: undefined
+											}
 										>
 											<Icon
 												className={clsx(
 													"w-8 h-8",
-													isActive
-														? "text-black"
-														: accent
-															? "text-primary"
-															: "text-unfocus"
+													isSpecial
+														? "text-white"
+														: isActive
+															? "text-black"
+															: accent
+																? "text-primary"
+																: "text-unfocus"
 												)}
 												aria-hidden="true"
 												focusable="false"
@@ -120,9 +131,18 @@ const TwoColPage = memo(function TwoColPage({
 											<span className="sr-only">{label}</span>
 										</ButtonSquircleContainer>
 									</Link>
-									<p
-										className="text-lg text-center text-unfocus"
 
+									<p
+										className={clsx(
+											"text-lg text-center",
+											isSpecial
+												? "text-accent"
+												: isActive
+													? "text-[#BDBDBD]"
+													: accent
+														? "text-accent/80"
+														: "text-unfocus"
+										)}
 									>
 										{label.includes("Connect") ? (
 											<>

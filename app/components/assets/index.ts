@@ -5,6 +5,7 @@ export { default as WideSquircleContainer } from './WideSquircleContainer';
 export { default as TallSquircleContainer } from './TallSquircleContainer';
 export { default as Elasticsearch } from './Elasticsearch';
 export { default as HamburgerDots } from './HamburgerDots';
+export { default as ExternalLink } from './ExternalLink';
 export { default as Springboot } from './Springboot';
 export { default as ArrowDown } from './ArrowDown';
 export { default as Linkedin } from './Linkedin';
