@@ -14,7 +14,7 @@ const Mail = (props: SVGProps<SVGSVGElement>) => (
 			d="M48.9 0H8.1A5.1 5.1 0 0 0 3 5.1v30.6a5.1 5.1 0 0 0 5.1 5.1h40.8a5.1 5.1 0 0 0 5.1-5.1V5.1A5.1 5.1 0 0 0 48.9 0"
 		></path>
 		<path
-			stroke="currentColor"
+			stroke="black"
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="5.1"

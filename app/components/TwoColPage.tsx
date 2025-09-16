@@ -57,7 +57,6 @@ const TwoColPage = memo(function TwoColPage({
 					: <div className={clsx("min-w-0 w-full", className)}>
 						{left}
 					</div>
-
 				}
 			</aside>
 			<main
