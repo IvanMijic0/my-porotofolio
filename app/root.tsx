@@ -8,7 +8,7 @@ import {
 	useParams,
 } from "react-router";
 import type { Route } from "./+types/root";
-import { useEffect, type PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
 
 import "./app.css";
 import { I18nProvider } from "./providers";

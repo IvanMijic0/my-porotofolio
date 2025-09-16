@@ -17,6 +17,7 @@ const I18nProvider = ({
 			localStorage.setItem("lang", lang);
 		}
 	}, [lang]);
+
 	const t = (key: string, fallback?: string) => translate(lang, key, fallback);
 
 	const makeHref = (path: string) => {
