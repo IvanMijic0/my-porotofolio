@@ -10,10 +10,12 @@ import {
 	Github,
 } from "~/components";
 import { Link } from "react-router";
-import { useIsMobile } from "~/hooks";
+import { useIsMobile, useTranslate } from "~/hooks";
 
 const ContactLeft = memo(function ContactLeft() {
 	const isMobile = useIsMobile();
+	const { t } = useTranslate();
+
 	const buttonSize = isMobile ? 60 : 110;
 
 	return (
@@ -34,7 +36,8 @@ const ContactLeft = memo(function ContactLeft() {
 						<Mail className="w-9 h-9 lg:w-auto lg:h-auto" />
 					</ButtonSquircleContainer>
 					<p className="text-lg lg:text-3xl text-[#BDBDBD] text-center">
-						<span className="text-accent">Email</span> me
+						<span className="text-accent">{t("contact.cta.email_accent", "Email")}</span>{" "}
+						{t("contact.cta.email_rest", "me")}
 					</p>
 				</Link>
 
@@ -46,7 +49,8 @@ const ContactLeft = memo(function ContactLeft() {
 						<ContactIcon className="w-9 h-9 lg:w-auto lg:h-auto" />
 					</ButtonSquircleContainer>
 					<p className="text-lg lg:text-3xl text-[#BDBDBD] text-center">
-						<span className="text-accent">Call</span> me
+						<span className="text-accent">{t("contact.cta.call_accent", "Call")}</span>{" "}
+						{t("contact.cta.call_rest", "me")}
 					</p>
 				</Link>
 
@@ -60,7 +64,8 @@ const ContactLeft = memo(function ContactLeft() {
 						<Linkedin className="w-9 h-9 lg:w-auto lg:h-auto" />
 					</ButtonSquircleContainer>
 					<p className="text-md lg:text-3xl text-[#BDBDBD] w-2/3 text-center">
-						<span className="text-accent">Connect</span> with me
+						<span className="text-accent">{t("contact.cta.connect_accent", "Connect")}</span>{" "}
+						{t("contact.cta.connect_rest", "with me")}
 					</p>
 				</Link>
 
@@ -74,7 +79,8 @@ const ContactLeft = memo(function ContactLeft() {
 						<Github className="w-9 h-9 lg:w-auto lg:h-auto" />
 					</ButtonSquircleContainer>
 					<p className="text-md lg:text-3xl text-[#BDBDBD] text-center">
-						<span className="text-accent">Personal</span> GitHub
+						<span className="text-accent">{t("contact.cta.personal_accent", "Personal")}</span>{" "}
+						{t("contact.cta.personal_rest", "GitHub")}
 					</p>
 				</Link>
 			</ScrollShadow>
@@ -83,6 +89,8 @@ const ContactLeft = memo(function ContactLeft() {
 });
 
 const ContactRight = memo(function ContactRight() {
+	const { t } = useTranslate();
+
 	return (
 		<section
 			aria-labelledby="services-title"
@@ -91,11 +99,15 @@ const ContactRight = memo(function ContactRight() {
 			<div className="flex flex-col gap-6 lg:gap-16 h-full">
 				<h1 id="services-title" className="text-5xl lg:text-7xl font-bold leading-tight">
 					<span className="block text-5xl lg:text-8xl">
-						Get in <span className="text-accent">Touch</span>
+						{t("contact.head.l1", "Get in")}{" "}
+						<span className="text-accent">{t("contact.head.accent", "Touch")}</span>
 					</span>
 				</h1>
 				<p className="text-lg lg:text-3xl font-extralight w-5/6 lg:w-4/5">
-					Looking for a mid-level full-stack software engineer, or CTO-level consultant? Let’s talk.
+					{t(
+						"contact.sub",
+						"Looking for a mid-level full-stack software engineer, or CTO-level consultant? Let’s talk."
+					)}
 				</p>
 			</div>
 		</section>

@@ -1,5 +1,5 @@
 import { memo, type ReactNode, type JSX, type SVGProps } from "react";
-import { Link } from "react-router";
+import { Link, NavLink, useParams } from "react-router";
 import clsx from "clsx";
 import {
 	ButtonSquircleContainer,
@@ -7,9 +7,11 @@ import {
 	TallSquircleContainer,
 	WideSquircleContainer,
 } from "./assets";
-import { useIsMobile } from "~/hooks";
+import { useIsMobile, useTranslate } from "~/hooks";
 import { SiteConfig } from "~/config";
 import { useLocation } from "react-router";
+import { LanguageToggleButton } from "./ui";
+import { NavHelper } from "~/helpers";
 
 type NavItem = {
 	label: string;
@@ -33,7 +35,10 @@ const TwoColPage = memo(function TwoColPage({
 	className,
 }: Props) {
 	const isMobile = useIsMobile('lg');
-	const location = useLocation();
+
+	const { lang: langParam } = useParams();
+	const lang = (langParam === "ba" || langParam === "en") ? langParam : "en";
+
 
 	return (
 		<>
@@ -90,74 +95,86 @@ const TwoColPage = memo(function TwoColPage({
 				}
 				{!isMobile && <nav className="mt-6" aria-label="Primary">
 					<ul className="grid grid-cols-3 w-1/2 gap-y-12 gap-x-6 pl-24">
-						{SiteConfig.navElements.map(({ label, href, icon: Icon, accent }) => {
-							const isActive = location.pathname === href;
-							const isSpecial = (label.includes("Connect") || label.includes("Work")) && isActive;
+						{SiteConfig.useNavElements().map(({ label, path, icon: Icon, accent, special }) => {
+							const to = NavHelper.normalize(`/${lang}${path ? `/${path}` : ""}`);
 
 							return (
 								<li key={label} className="flex flex-col gap-6 items-center">
-									<Link
-										to={href}
-										aria-current={isActive ? "page" : undefined}
+									<NavLink
+										to={to}
+										end={path === ""}
 										className="inline-flex items-center justify-center"
 									>
-										<ButtonSquircleContainer
-											fillOpacity={isActive ? 1 : accent ? 0.8 : 1}
-											fill={
-												isSpecial
-													? "#FF601C" // your accent color
-													: isActive
-														? "#FCFCFC"
-														: accent
-															? "#FF601C80"
-															: undefined
-											}
-										>
-											<Icon
+										{({ isActive }) => {
+											const isSpecial = special && isActive
+
+											return (
+												<ButtonSquircleContainer
+													fillOpacity={isActive ? 1 : accent ? 0.8 : 1}
+													fill={
+														isSpecial
+															? "#FF601C"
+															: isActive
+																? "#FCFCFC"
+																: accent
+																	? "#FF601C80"
+																	: undefined
+													}
+												>
+													<Icon
+														className={clsx(
+															"w-8 h-8",
+															isSpecial
+																? "text-white"
+																: isActive
+																	? "text-black"
+																	: accent
+																		? "text-primary"
+																		: "text-unfocus"
+														)}
+														aria-hidden="true"
+														focusable="false"
+													/>
+													<span className="sr-only">{label}</span>
+												</ButtonSquircleContainer>
+											);
+										}}
+									</NavLink>
+									<NavLink to={to} end={path === ""}>
+										{({ isActive }) => (
+											<p
 												className={clsx(
-													"w-8 h-8",
-													isSpecial
-														? "text-white"
+													"text-lg text-center",
+													(label.includes("Connect") || label.includes("Work")) && isActive
+														? "text-accent"
 														: isActive
-															? "text-black"
+															? "text-[#BDBDBD]"
 															: accent
-																? "text-primary"
+																? "text-accent/80"
 																: "text-unfocus"
 												)}
-												aria-hidden="true"
-												focusable="false"
-											/>
-											<span className="sr-only">{label}</span>
-										</ButtonSquircleContainer>
-									</Link>
-
-									<p
-										className={clsx(
-											"text-lg text-center",
-											isSpecial
-												? "text-accent"
-												: isActive
-													? "text-[#BDBDBD]"
-													: accent
-														? "text-accent/80"
-														: "text-unfocus"
+											>
+												{label.includes("Connect") ? (
+													<>
+														Let&apos;s<br />Connect
+													</>
+												) : label.includes("Work") ? (
+													<>
+														View<br />Work
+													</>
+												) : (
+													label
+												)}
+											</p>
 										)}
-									>
-										{label.includes("Connect") ? (
-											<>
-												Let&apos;s<br />Connect
-											</>
-										) : label.includes("Work") ? (
-											<>
-												View<br />Work
-											</>
-										) : (
-											label
-										)}
-									</p>
+									</NavLink>
 								</li>
 							);
 						})}
+						<li className="flex flex-col gap-6 items-center">
+							<LanguageToggleButton />
+							<p className="text-lg text-center text-unfocus">Language</p>
+						</li>
 					</ul>
 				</nav>
 				}

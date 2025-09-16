@@ -1,8 +1,11 @@
 import { memo } from "react";
 import type { Route } from "./+types/projects";
 import { ExternalLinkButton, ScrollDownButton, ScrollShadow, TwoColPage } from "~/components";
+import { useTranslate } from "~/hooks";
 
 const ProjectsLeft = memo(function ProjectsLeft() {
+	const { t } = useTranslate();
+
 	return (
 		<section
 			id="profile"
@@ -17,30 +20,40 @@ const ProjectsLeft = memo(function ProjectsLeft() {
 					<h3 className="text-3xl lg:text-4xl font-bold">
 						<span className="text-accent">MyPassionMatch</span> - CTO
 					</h3>
-					<ExternalLinkButton href="https://mypassionmatch.com" ariaLabel="Open MyPassionMatch website" />
+					<ExternalLinkButton
+						href="https://mypassionmatch.com"
+						ariaLabel={t("projects.aria.open", "Open website")}
+					/>
 				</div>
 				<div className="flex flex-col gap-8 lg:text-3xl items-start">
 					<div>
-						<p className="font-bold">Problem:</p>
-						<p className="font-extralight">A U.S.-based startup needed a scalable matchmaking platform.</p>
-					</div>
-					<div>
-						<p className="font-bold">Solution:</p>
+						<p className="font-bold">{t("projects.labels.problem", "Problem")}:</p>
 						<p className="font-extralight">
-							Led backend architecture, DevOps pipelines, and team management. Built the core system with Laravel &
-							React.
+							{t("projects.mpm.problem", "A U.S.-based startup needed a scalable matchmaking platform.")}
 						</p>
 					</div>
 					<div>
-						<p className="font-bold">Impact:</p>
+						<p className="font-bold">{t("projects.labels.solution", "Solution")}:</p>
 						<p className="font-extralight">
-							Successfully launched to U.S. users with a secure, production-ready platform.
+							{t(
+								"projects.mpm.solution",
+								"Led backend architecture, DevOps pipelines, and team management. Built the core system with Laravel & React."
+							)}
+						</p>
+					</div>
+					<div>
+						<p className="font-bold">{t("projects.labels.impact", "Impact")}:</p>
+						<p className="font-extralight">
+							{t(
+								"projects.mpm.impact",
+								"Successfully launched to U.S. users with a secure, production-ready platform."
+							)}
 						</p>
 					</div>
 				</div>
 				<img
 					src="/mockup-dating.webp"
-					alt="MyPassionMatch product mockup"
+					alt={t("projects.mpm.alt", "MyPassionMatch product mockup")}
 					loading="lazy"
 					decoding="async"
 					className="w-full h-auto"
@@ -49,158 +62,202 @@ const ProjectsLeft = memo(function ProjectsLeft() {
 					<h3 className="text-3xl lg:text-4xl font-bold">
 						<span className="text-accent">VitaSecura</span> - CTO
 					</h3>
-					<ExternalLinkButton href="https://app.vitasecura.ch" ariaLabel="Open VitaSecura app" />
+					<ExternalLinkButton
+						href="https://app.vitasecura.ch"
+						ariaLabel={t("projects.aria.open", "Open website")}
+					/>
 				</div>
 				<div className="flex flex-col gap-8 lg:text-3xl items-start">
 					<div>
-						<p className="font-bold">Problem:</p>
-						<p className="font-extralight">A Swiss healthcare company required a secure SaaS app with multilingual support.</p>
-					</div>
-					<div>
-						<p className="font-bold">Solution:</p>
+						<p className="font-bold">{t("projects.labels.problem", "Problem")}:</p>
 						<p className="font-extralight">
-							Designed backend with Laravel & MySQL, implemented CI/CD with GitHub Actions, and oversaw cloud
-							deployments.
+							{t("projects.vs.problem", "A Swiss healthcare company required a secure SaaS app with multilingual support.")}
 						</p>
 					</div>
 					<div>
-						<p className="font-bold">Impact:</p>
+						<p className="font-bold">{t("projects.labels.solution", "Solution")}:</p>
 						<p className="font-extralight">
-							Delivered a fully functional SaaS platform trusted by healthcare providers in Switzerland.
+							{t(
+								"projects.vs.solution",
+								"Designed backend with Laravel & MySQL, implemented CI/CD with GitHub Actions, and oversaw cloud deployments."
+							)}
+						</p>
+					</div>
+					<div>
+						<p className="font-bold">{t("projects.labels.impact", "Impact")}:</p>
+						<p className="font-extralight">
+							{t(
+								"projects.vs.impact",
+								"Delivered a fully functional SaaS platform trusted by healthcare providers in Switzerland."
+							)}
 						</p>
 					</div>
 				</div>
 				<img
 					src="/mockup-crm.webp"
-					alt="VitaSecura SaaS mockup"
+					alt={t("projects.vs.alt", "VitaSecura SaaS mockup")}
 					loading="lazy"
 					decoding="async"
 					className="w-full h-auto"
 				/>
 				<div className="w-full mt-12 lg:mt-0 flex flex-col-reverse gap-1 lg:gap-0 lg:flex-row justify-between items-start lg:items-center">
 					<h3 className="text-3xl lg:text-4xl font-bold">
-						<span className="text-accent">Amna Kolić</span> - Independent Project
+						<span className="text-accent">Amna Kolić</span> - {t("projects.role.independent", "Independent Project")}
 					</h3>
-					<ExternalLinkButton href="https://amnakolic.com" ariaLabel="Open Amna Kolić website" />
+					<ExternalLinkButton
+						href="https://amnakolic.com"
+						ariaLabel={t("projects.aria.open", "Open website")}
+					/>
 				</div>
 				<div className="flex flex-col gap-8 lg:text-3xl items-start">
 					<div>
-						<p className="font-bold">Problem:</p>
-						<p className="font-extralight">Needed a modern, fast, and SEO-optimized personal brand website.</p>
-					</div>
-					<div>
-						<p className="font-bold">Solution:</p>
+						<p className="font-bold">{t("projects.labels.problem", "Problem")}:</p>
 						<p className="font-extralight">
-							Designed and built full-stack with Laravel & custom UI, focusing on mobile performance and SEO.
+							{t("projects.ak.problem", "Needed a modern, fast, and SEO-optimized personal brand website.")}
 						</p>
 					</div>
 					<div>
-						<p className="font-bold">Impact:</p>
-						<p className="font-extralight">Delivered a high-performance personal brand site.</p>
+						<p className="font-bold">{t("projects.labels.solution", "Solution")}:</p>
+						<p className="font-extralight">
+							{t(
+								"projects.ak.solution",
+								"Designed and built full-stack with Laravel & custom UI, focusing on mobile performance and SEO."
+							)}
+						</p>
+					</div>
+					<div>
+						<p className="font-bold">{t("projects.labels.impact", "Impact")}:</p>
+						<p className="font-extralight">
+							{t("projects.ak.impact", "Delivered a high-performance personal brand site.")}
+						</p>
 					</div>
 				</div>
 				<img
 					src="/mockup-cookie.webp"
-					alt="Amna Kolić website mockup"
+					alt={t("projects.ak.alt", "Amna Kolić website mockup")}
 					loading="lazy"
 					decoding="async"
 					className="w-full h-auto"
 				/>
 				<div className="w-full mt-12 lg:mt-0 flex flex-col-reverse gap-1 lg:gap-0 lg:flex-row justify-between items-start lg:items-center">
 					<h3 className="text-3xl lg:text-4xl font-bold">
-						<span className="text-accent">Mykotheke</span> - Localization Project
+						<span className="text-accent">Mykotheke</span> - {t("projects.role.localization", "Localization Project")}
+
 					</h3>
-					<ExternalLinkButton href="https://mykotheke.at" ariaLabel="Open Mykotheke website" />
+					<ExternalLinkButton
+						href="https://mykotheke.at"
+						ariaLabel={t("projects.aria.open", "Open website")}
+					/>
 				</div>
 				<div className="flex flex-col gap-8 lg:text-3xl items-start">
 					<div>
-						<p className="font-bold">Problem:</p>
-						<p className="font-extralight">Required multi-language support for a German/English user base.</p>
-					</div>
-					<div>
-						<p className="font-bold">Solution:</p>
+						<p className="font-bold">{t("projects.labels.problem", "Problem")}:</p>
 						<p className="font-extralight">
-							Implemented full localization & translation workflows to make the platform accessible across regions.
+							{t("projects.mk.problem", "Required multi-language support for a German/English user base.")}
 						</p>
 					</div>
 					<div>
-						<p className="font-bold">Impact:</p>
-						<p className="font-extralight">Expanded usability and increased adoption across Austria and Germany.</p>
+						<p className="font-bold">{t("projects.labels.solution", "Solution")}:</p>
+						<p className="font-extralight">
+							{t(
+								"projects.mk.solution",
+								"Implemented full localization & translation workflows to make the platform accessible across regions."
+							)}
+						</p>
+					</div>
+					<div>
+						<p className="font-bold">{t("projects.labels.impact", "Impact")}:</p>
+						<p className="font-extralight">
+							{t(
+								"projects.mk.impact",
+								"Expanded usability and increased adoption across Austria and Germany."
+							)}
+						</p>
 					</div>
 				</div>
 				<img
 					src="/mockup-mykotheke.webp"
-					alt="Mykotheke platform mockup"
+					alt={t("projects.mk.alt", "Mykotheke platform mockup")}
 					loading="lazy"
 					decoding="async"
 					className="w-full h-auto"
 				/>
 				<div className="w-full mt-12 lg:mt-0 flex flex-col-reverse gap-1 lg:gap-0 lg:flex-row justify-between items-start lg:items-center">
 					<h3 className="text-3xl lg:text-4xl font-bold">
-						<span className="text-accent">Colibrie</span> - Demo Project
+						<span className="text-accent">Colibrie</span> - {t("projects.role.demo", "Demo Project")}
 					</h3>
-					<ExternalLinkButton href="https://colibrie.eu" ariaLabel="Open Colibrie website" />
+					<ExternalLinkButton
+						href="https://colibrie.eu"
+						ariaLabel={t("projects.aria.open", "Open website")}
+					/>
 				</div>
 				<div className="flex flex-col gap-8 lg:text-3xl items-start">
 					<div>
-						<p className="font-bold">Problem:</p>
+						<p className="font-bold">{t("projects.labels.problem", "Problem")}:</p>
 						<p className="font-extralight">
-							A European energy startup needed a platform to automate billing and financial management for decentralized,
-							green energy communities in a user-friendly way.
+							{t(
+								"projects.cb.problem",
+								"A European energy startup needed a platform to automate billing and financial management for decentralized, green energy communities in a user-friendly way."
+							)}
 						</p>
 					</div>
 					<div>
-						<p className="font-bold">Solution:</p>
+						<p className="font-bold">{t("projects.labels.solution", "Solution")}:</p>
 						<p className="font-extralight">
-							Built a demo proof-of-concept: multi-tenant billing workflows, member administration, analytics
-							dashboards, and demo booking flow. Backend with Spring Boot + PostgreSQL and an intuitive UI/UX aligned to
-							Colibrie’s brand.
+							{t(
+								"projects.cb.solution",
+								"Built a demo proof-of-concept: multi-tenant billing workflows, member administration, analytics dashboards, and demo booking flow. Backend with Spring Boot + PostgreSQL and an intuitive UI/UX aligned to Colibrie’s brand."
+							)}
 						</p>
 					</div>
 					<div>
-						<p className="font-bold">Impact:</p>
+						<p className="font-bold">{t("projects.labels.impact", "Impact")}:</p>
 						<p className="font-extralight">
-							Showcased a scalable MVP for automated energy community management—founding, managing, and analyzing energy
-							hubs with ease.
+							{t(
+								"projects.cb.impact",
+								"Showcased a scalable MVP for automated energy community management—founding, managing, and analyzing energy hubs with ease."
+							)}
 						</p>
 					</div>
 				</div>
 				<img
 					src="/mockup-colibrie.webp"
-					alt="Colibrie energy platform mockup"
+					alt={t("projects.cb.alt", "Colibrie energy platform mockup")}
 					loading="lazy"
 					decoding="async"
 					className="w-full h-auto"
 				/>
 			</ScrollShadow>
-		</section>
+		</section >
 	);
 });
 
 const ProjectsRight = memo(function ProjectsRight() {
+	const { t } = useTranslate();
+
 	return (
 		<section
 			aria-labelledby="services-title"
-			className="flex flex-col lg:gap-7 justify-between h-full w-full px-12 py-12 lg:px-28"
+			className="flex flex-col justify-between lg:gap-7 h-full w-full px-12 py-12 lg:px-28"
 		>
 			<h1 id="services-title" className="text-5xl lg:text-7xl font-bold leading-tight">
 				<span className="flex flex-col gap-4 text-5xl leading-tight lg:hidden">
 					<span>
-						Step into
+						{t("projects.head.mobile.l1", "Step into")}
 						<br />
-						the world <br />
-						of <span className="text-accent">my</span>
+						{t("projects.head.mobile.l2", "the world")} <br />
+						{t("projects.head.mobile.l3", "of")} <span className="text-accent">{t("projects.head.mobile.l4", "my")}</span>
 						<br />
-						<span className="text-accent">featured projects</span>
+						<span className="text-accent">{t("projects.head.mobile.l5", "featured projects")}</span>
 					</span>
 				</span>
 
 				<span className="hidden lg:block text-5xl lg:text-8xl">
-					Step into the
+					{t("projects.head.desktop.l1", "Step into the")}
 					<br />
-					world of <span className="text-accent">my</span>
+					{t("projects.head.desktop.l2", "world of")} <span className="text-accent">{t("projects.head.desktop.l3", "my")}</span>
 					<br />
-					<span className="text-accent">featured projects</span>
+					<span className="text-accent">{t("projects.head.desktop.l4", "featured projects")}</span>
 				</span>
 			</h1>
 

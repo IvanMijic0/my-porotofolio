@@ -1,8 +1,11 @@
 import { memo } from "react";
 import type { Route } from "./+types/about-me";
 import { ScrollDownButton, ScrollShadow, TwoColPage } from "~/components";
+import { useTranslate } from "~/hooks";
 
 const AboutLeft = memo(function AboutLeft() {
+	const { t } = useTranslate();
+
 	return (
 		<section
 			id="profile"
@@ -14,51 +17,56 @@ const AboutLeft = memo(function AboutLeft() {
 				contentClassName="h-full flex flex-col gap-8 px-4"
 			>
 				<p className="font-extralight text-2xl lg:text-3xl">
-					I’m a full-stack engineer specializing in backend systems, scalable
-					infrastructures, and end-to-end product delivery. With hands-on experience
-					as a CTO, backend team lead, and independent developer, I combine technical
-					depth with leadership and strategy.
+					{t(
+						"about.intro",
+						"I’m a full-stack engineer specializing in backend systems, scalable infrastructures, and end-to-end product delivery. With hands-on experience as a CTO, backend team lead, and independent developer, I combine technical depth with leadership and strategy."
+					)}
 				</p>
 
-				<h3 className="text-3xl lg:text-4xl font-bold">My technical stack includes:</h3>
+				<h3 className="text-3xl lg:text-4xl font-bold">
+					{t("about.stack_title", "My technical stack includes:")}
+				</h3>
 
 				<p className="text-2xl lg:text-3xl font-bold">
-					Backend Development:{" "}
+					{t("about.backend", "Backend Development:")}{" "}
 					<span className="font-normal text-accent">
 						Laravel, Spring Boot (Kotlin), REST APIs, Redis
 					</span>
 				</p>
 
 				<p className="text-2xl lg:text-3xl font-bold">
-					Frontend Development:{" "}
+					{t("about.frontend", "Frontend Development:")}{" "}
 					<span className="font-normal text-accent">
 						React, Inertia.js, Unity (AR, game logic)
 					</span>
 				</p>
 
 				<p className="text-2xl lg:text-3xl font-bold">
-					DevOps & Infrastructure:{" "}
+					{t("about.devops", "DevOps & Infrastructure:")}{" "}
 					<span className="font-normal text-accent">
 						Docker, NGINX, Hetzner cloud hosting, GitHub Actions CI/CD
 					</span>
 				</p>
 
 				<p className="text-2xl lg:text-3xl font-bold">
-					Cloud & Performance:{" "}
+					{t("about.cloud", "Cloud & Performance:")}{" "}
 					<span className="font-normal text-accent">
 						MySQL, Redis, caching strategies, optimization at scale
 					</span>
 				</p>
 
 				<p className="text-2xl lg:text-3xl font-bold">
-					Leadership & Collaboration:{" "}
+					{t("about.leadership", "Leadership & Collaboration:")}{" "}
 					<span className="font-normal text-accent">
 						CTO decision-making, team mentorship, Agile practices
 					</span>
 				</p>
 
 				<p className="font-extralight text-2xl lg:text-3xl">
-					I believe in writing clean, maintainable code and delivering business value through technology.
+					{t(
+						"about.closing",
+						"I believe in writing clean, maintainable code and delivering business value through technology."
+					)}
 				</p>
 			</ScrollShadow>
 		</section>
@@ -66,6 +74,8 @@ const AboutLeft = memo(function AboutLeft() {
 });
 
 const AboutRight = memo(function AboutRight() {
+	const { t } = useTranslate();
+
 	return (
 		<section
 			aria-labelledby="about-title"
@@ -74,18 +84,28 @@ const AboutRight = memo(function AboutRight() {
 			<h1 id="about-title" className="text-5xl lg:text-7xl font-bold leading-tight">
 				<span className="flex flex-col gap-4 text-4xl leading-tight lg:hidden">
 					<span>
-						I build <span className="text-accent">the logic </span>
-						behind <span className="text-accent">the web.</span><br />
+						{t("about.hero.l1", "I build")}{" "}
+						<span className="text-accent">{t("about.hero.l2accent", "the logic ")}</span>
+						{t("about.hero.l2rest", "behind")}{" "}
+						<span className="text-accent">{t("about.hero.l3accent", "the web.")}</span>
 					</span>
 					<span>
-						Get to <span className="text-accent">know</span><br />
-						me better!
+						{t("about.hero.l4", "Get to")}{" "}
+						<span className="text-accent">{t("about.hero.l5accent", "know")}</span>{" "}
+						{t("about.hero.l5rest", "me better!")}
 					</span>
 				</span>
+
 				<span className="hidden lg:block text-5xl lg:text-7xl">
-					I build <span className="text-accent">the logic</span><br />
-					behind <span className="text-accent">the web.</span><br />
-					Get to <span className="text-accent">know me</span> better!
+					{t("about.hero.l1", "I build")}{" "}
+					<span className="text-accent">{t("about.hero.l2accent", "the logic")}</span>
+					<br />
+					{t("about.hero.l2rest", "behind")}{" "}
+					<span className="text-accent">{t("about.hero.l3accent", "the web.")}</span>
+					<br />
+					{t("about.hero.l4", "Get to")}{" "}
+					<span className="text-accent">{t("about.hero.l5accent", "know me")}</span>{" "}
+					{t("about.hero.l5rest", "better!")}
 				</span>
 			</h1>
 

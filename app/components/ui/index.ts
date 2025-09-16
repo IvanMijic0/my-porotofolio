@@ -1,3 +1,4 @@
+export { default as LanguageToggleButton } from './LanguageToggleButton';
 export { default as ExternalLinkButton } from './ExternalLinkButton';
 export { default as ScrollDownButton } from './ScrollDownButton';
 export { default as HamburgerButton } from './HamburgerButton';

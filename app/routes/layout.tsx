@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Outlet, useLocation, Link } from "react-router";
-import { HamburgerButton, Modal, ScrollUpOnMobile, Silk } from "~/components";
+import { Outlet, useLocation, useParams, NavLink } from "react-router";
+import { HamburgerButton, LanguageToggleButton, Modal, ScrollUpOnMobile, Silk } from "~/components";
 import { useIsMobile } from "~/hooks";
 import { SiteConfig } from "~/config";
 import clsx from "clsx";
 import { ButtonSquircleContainer, Logo } from "~/components/assets";
+import { NavHelper } from "~/helpers";
 
 const LOADER_MS = 800;
 
@@ -50,7 +51,7 @@ const Layout = () => {
 	return (
 		<div className="relative w-screen h-screen">
 			<AnimatePresence>
-				{isMobile && isLoading && (
+				{isLoading && (
 					<motion.div
 						key="loader"
 						className="fixed inset-0 z-[99999] flex items-center justify-center bg-black lg:hidden"
@@ -69,7 +70,6 @@ const Layout = () => {
 					</motion.div>
 				)}
 			</AnimatePresence>
-
 			<div className="pointer-events-none fixed inset-0 -z-10">
 				<Silk
 					backgroundMode
@@ -80,7 +80,6 @@ const Layout = () => {
 					noiseIntensity={0.4}
 				/>
 			</div>
-
 			<div className="relative z-10 h-full w-full">
 				{isMobile && (
 					<div className="fixed right-4 top-4 z-50">
@@ -93,76 +92,91 @@ const Layout = () => {
 			</div>
 			<Modal isOpen={isModalOpen} onClose={closeModal}>
 				<ul className="grid grid-cols-3 gap-y-12 gap-x-10 w-full">
-					{SiteConfig.navElements.map(({ label, href, icon: Icon, accent }) => {
-						const isActive = location.pathname === href;
-						const isSpecial = (label.includes("Connect") || label.includes("Work")) && isActive;
+					{SiteConfig.useNavElements().map(({ label, path, icon: Icon, accent, special }) => {
+						const { lang: langParam } = useParams();
+						const lang = (langParam === "ba" || langParam === "en") ? langParam : "en";
+						const to = NavHelper.normalize(`/${lang}${path ? `/${path}` : ""}`);
 
 						return (
 							<li key={label} className="flex flex-col gap-4 items-center">
-								<Link
-									to={href}
-									aria-current={isActive ? "page" : undefined}
+								<NavLink
+									to={to}
+									end={path === ""}
 									className="inline-flex items-center justify-center"
 									onClick={closeModal}
 								>
-									<ButtonSquircleContainer
-										width={50}
-										height={50}
-										fillOpacity={isActive ? 1 : accent ? 0.8 : 1}
-										fill={
-											isSpecial
-												? "#FF601C"
-												: isActive
-													? "#FCFCFC"
-													: accent
-														? "#FF601C80"
-														: undefined
-										}
-									>
-										<Icon
+									{({ isActive }: { isActive: boolean }) => {
+										const isSpecial = special && isActive
+
+										return (
+											<ButtonSquircleContainer
+												width={50}
+												height={50}
+												fillOpacity={isActive ? 1 : accent ? 0.8 : 1}
+												fill={
+													isSpecial
+														? "#FF601C"
+														: isActive
+															? "#FCFCFC"
+															: accent
+																? "#FF601C80"
+																: undefined
+												}
+											>
+												<Icon
+													className={clsx(
+														"w-6 h-6",
+														isSpecial
+															? "text-white"
+															: isActive
+																? "text-black"
+																: accent
+																	? "text-primary"
+																	: "text-unfocus"
+													)}
+													aria-hidden="true"
+													focusable="false"
+												/>
+												<span className="sr-only">{label}</span>
+											</ButtonSquircleContainer>
+										);
+									}}
+								</NavLink>
+								<NavLink to={to} end={path === ""} onClick={closeModal}>
+									{({ isActive }) => (
+										<p
 											className={clsx(
-												"w-6 h-6",
-												isSpecial
-													? "text-white"
+												"text-sm text-center",
+												(label.includes("Connect") || label.includes("Work")) && isActive
+													? "text-accent"
 													: isActive
-														? "text-black"
+														? "text-[#BDBDBD]"
 														: accent
-															? "text-primary"
+															? "text-accent/80"
 															: "text-unfocus"
 											)}
-											aria-hidden="true"
-											focusable="false"
-										/>
-										<span className="sr-only">{label}</span>
-									</ButtonSquircleContainer>
-								</Link>
-								<p
-									className={clsx(
-										"text-sm text-center",
-										isSpecial
-											? "text-accent"
-											: isActive
-												? "text-[#BDBDBD]"
-												: accent
-													? "text-accent/80"
-													: "text-unfocus"
+										>
+											{label.includes("Connect") ? (
+												<>
+													Let&apos;s<br />Connect
+												</>
+											) : label.includes("Work") ? (
+												<>
+													View<br />Work
+												</>
+											) : (
+												label
+											)}
+										</p>
 									)}
-								>
-									{label.includes("Connect") ? (
-										<>
-											Let&apos;s<br />Connect
-										</>
-									) : label.includes("Work") ? (
-										<>
-											View<br />Work
-										</>
-									) : (
-										label
-									)}
-								</p>
+								</NavLink>
 							</li>
 						);
 					})}
+					<li className="flex flex-col gap-4 items-center">
+						<LanguageToggleButton width={50} height={50} />
+						<p className="text-sm text-center text-unfocus">Language</p>
+					</li>
 				</ul>
 			</Modal>
 		</div>

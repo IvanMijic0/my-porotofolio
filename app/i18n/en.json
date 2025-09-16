@@ -1,0 +1,175 @@
+{
+  "nav": {
+    "home": "Home",
+    "work": "View Work",
+    "connect": "Let's Connect",
+    "services": "Services",
+    "about": "About"
+  },
+ "home": {
+    "expertiseTitle": "Expertise",
+    "logic": "Logic",
+    "driven": "Driven",
+    "design": "Design",
+    "conscious": "Conscious",
+    "engineering": "Engineering done right",
+    "subtitle": "Medior Software Engineer with CTO Experience"
+  },
+"projects": {
+    "labels": {
+      "problem": "Problem",
+      "solution": "Solution",
+      "impact": "Impact"
+    },
+    "role": {
+      "independent": "Independent Project",
+      "localization": "Localization Project",
+      "demo": "Demo Project"
+    },
+    "aria": {
+      "open": "Open website"
+    },
+    "head": {
+      "mobile": {
+        "l1": "Step into",
+        "l2": "the world",
+        "l3": "of",
+        "l4": "my",
+        "l5": "featured projects"
+      },
+      "desktop": {
+        "l1": "Step into the",
+        "l2": "world of",
+        "l3": "my",
+        "l4": "featured projects"
+      }
+    },
+    "mpm": {
+      "problem": "A U.S.-based startup needed a scalable matchmaking platform.",
+      "solution": "Led backend architecture, DevOps pipelines, and team management. Built the core system with Laravel & React.",
+      "impact": "Successfully launched to U.S. users with a secure, production-ready platform.",
+      "alt": "MyPassionMatch product mockup"
+    },
+    "vs": {
+      "problem": "A Swiss healthcare company required a secure SaaS app with multilingual support.",
+      "solution": "Designed backend with Laravel & MySQL, implemented CI/CD with GitHub Actions, and oversaw cloud deployments.",
+      "impact": "Delivered a fully functional SaaS platform trusted by healthcare providers in Switzerland.",
+      "alt": "VitaSecura SaaS mockup"
+    },
+    "ak": {
+      "problem": "Needed a modern, fast, and SEO-optimized personal brand website.",
+      "solution": "Designed and built full-stack with Laravel & custom UI, focusing on mobile performance and SEO.",
+      "impact": "Delivered a high-performance personal brand site.",
+      "alt": "Amna Kolić website mockup"
+    },
+    "mk": {
+      "problem": "Required multi-language support for a German/English user base.",
+      "solution": "Implemented full localization & translation workflows to make the platform accessible across regions.",
+      "impact": "Expanded usability and increased adoption across Austria and Germany.",
+      "alt": "Mykotheke platform mockup"
+    },
+    "cb": {
+      "problem": "A European energy startup needed a platform to automate billing and financial management for decentralized, green energy communities in a user-friendly way.",
+      "solution": "Built a demo proof-of-concept: multi-tenant billing workflows, member administration, analytics dashboards, and demo booking flow. Backend with Spring Boot + PostgreSQL and an intuitive UI/UX aligned to Colibrie’s brand.",
+      "impact": "Showcased a scalable MVP for automated energy community management—founding, managing, and analyzing energy hubs with ease.",
+      "alt": "Colibrie energy platform mockup"
+    }
+  },
+"contact": {
+    "head": {
+      "l1": "Get in",
+      "accent": "Touch"
+    },
+    "sub": "Looking for a mid-level full-stack software engineer, or CTO-level consultant? Let’s talk.",
+    "cta": {
+      "email_accent": "Email",
+      "email_rest": "me",
+      "call_accent": "Call",
+      "call_rest": "me",
+      "connect_accent": "Connect",
+      "connect_rest": "with me",
+      "personal_accent": "Personal",
+      "personal_rest": "GitHub"
+    }
+  },
+"services": {
+    "lead": "I help companies design and deliver secure, scalable, and future-proof software systems.",
+    "offered": "Services Offered:",
+    "items": {
+      "backend": {
+        "title": "Backend Engineering",
+        "desc": "Laravel, Spring Boot (Kotlin), REST APIs, Redis"
+      },
+      "fullstack": {
+        "title": "Full-Stack Development",
+        "desc": "Laravel + React, Inertia.js, complete web solutions"
+      },
+      "arch": {
+        "title": "System Architecture",
+        "desc": "Secure, maintainable, and scalable infrastructures"
+      },
+      "devops": {
+        "title": "DevOps & Automation",
+        "desc": "Docker, CI/CD pipelines, NGINX, Hetzner deployments"
+      },
+      "optsec": {
+        "title": "Optimization & Security",
+        "desc": "WordPress & SaaS performance hardening"
+      },
+      "l10n": {
+        "title": "Localization & Internationalization",
+        "desc": "Multi-language support for global platforms"
+      },
+      "lead": {
+        "title": "Leadership & Mentorship",
+        "desc": "CTO-level guidance, Agile team leadership, code reviews"
+      }
+    },
+    "hero": {
+      "mobile": {
+        "l1": "Let's build",
+        "l2accent": "your",
+        "l2rest": "next",
+        "l3": "scalable",
+        "l4": "solution"
+      },
+      "desktop": {
+        "l1": "Let's build",
+        "l1accent": "your",
+        "l2": "next",
+        "l2accent": "scalable",
+        "l3": "solution"
+      }
+    }
+  },
+ "about": {
+    "intro": "I’m a full-stack engineer specializing in backend systems, scalable infrastructures, and end-to-end product delivery. With hands-on experience as a CTO, backend team lead, and independent developer, I combine technical depth with leadership and strategy.",
+
+    "stack_title": "My technical stack includes:",
+    "backend": "Backend Development:",
+    "frontend": "Frontend Development:",
+    "devops": "DevOps & Infrastructure:",
+    "cloud": "Cloud & Performance:",
+    "leadership": "Leadership & Collaboration:",
+    "closing": "I believe in writing clean, maintainable code and delivering business value through technology.",
+
+    "hero": {
+      "l1": "I build",
+      "l2accent": "the logic",
+      "l2rest": "behind",
+      "l3accent": "the web.",
+      "l4": "Get to",
+      "l5accent": "know me",
+      "l5rest": "better!"
+    }
+  },
+  "fallback": {
+    "title": {
+      "l1": "Page",
+      "l2": "not",
+      "l3": "found"
+    },
+    "message": "Sorry, the page you’re looking for doesn’t exist.",
+    "home": "Home"
+  }
+}

@@ -1,15 +1,16 @@
-import { Person, Home, Phone, Origami, Services, Blog } from "~/components/assets";
+import { Person, Home, Phone, Origami, Services } from "~/components/assets";
+import { useTranslate } from "~/hooks";
 
-const navElements = [
-	{ label: "Home", href: "/en", icon: Home, active: true },
-	{ label: "View Work", href: "/en/projects", icon: Origami, accent: true },
-	{ label: "Let's Connect", href: "/en/contact", icon: Phone, accent: true },
-	{ label: "Services", href: "/en/services", icon: Services },
-	{ label: "About", href: "/en/about-me", icon: Person },
-	{ label: "Blog", href: "/en/blog", icon: Blog },
-]
+const useNavElements = () => {
+	const { t, makeHref } = useTranslate();
 
+	return [
+		{ label: t("nav.home", "Home"), path: "", icon: Home, active: true, href: makeHref("") },
+		{ label: t("nav.work", "View Work"), path: "projects", icon: Origami, accent: true, href: makeHref("projects"), special: true },
+		{ label: t("nav.connect", "Let's Connect"), path: "contact", icon: Phone, accent: true, href: makeHref("contact"), special: true },
+		{ label: t("nav.services", "Services"), path: "services", icon: Services, href: makeHref("services") },
+		{ label: t("nav.about", "About"), path: "about-me", icon: Person, href: makeHref("about-me") },
+	];
+};
 
-export default {
-	navElements
-}
+export default { useNavElements };

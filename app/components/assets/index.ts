@@ -1,3 +1,5 @@
+export { default as MobileNotFoundSquircleContainer } from './MobileNotFoundSquircleContainer';
+export { default as NotFoundSquircleContainer } from './NotFoundSquircleContainer';
 export { default as MobileSquircleContainer } from './MobileSquircleContainer';
 export { default as ButtonSquircleContainer } from './ButtonSquircleContainer';
 export { default as ModalSquircleContainer } from './ModalSquircleContainer';

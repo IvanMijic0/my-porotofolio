@@ -1,0 +1,175 @@
+{
+  "nav": {
+    "home": "Početna",
+    "work": "Projekti",
+    "connect": "Kontakt",
+    "services": "Usluge",
+    "about": "O meni"
+  },
+ "home": {
+    "expertiseTitle": "Stručnost",
+    "logic": "Logikom",
+    "driven": "Vođeno",
+    "design": "Dizajnom",
+    "conscious": "Svjesno",
+    "engineering": "Inženjering na pravi način",
+    "subtitle": "Medior Softverski Inženjer sa CTO iskustvom"
+  },
+"projects": {
+    "labels": {
+      "problem": "Problem",
+      "solution": "Rješenje",
+      "impact": "Utjecaj"
+    },
+    "role": {
+      "independent": "Samostalni projekat",
+      "localization": "Projekat lokalizacije",
+      "demo": "Demo projekat"
+    },
+    "aria": {
+      "open": "Otvori web stranicu"
+    },
+    "head": {
+      "mobile": {
+        "l1": "Zakorači",
+        "l2": "u svijet",
+        "l3": "mojih",
+        "l4": "istaknutih",
+        "l5": "projekata"
+      },
+      "desktop": {
+        "l1": "Zakorači u",
+        "l2": "svijet mojih",
+        "l3": "istaknutih",
+        "l4": "projekata"
+      }
+    },
+    "mpm": {
+      "problem": "Američki startup je trebao skalabilnu platformu za uparivanje korisnika.",
+      "solution": "Vodio sam backend arhitekturu, DevOps procese i menadžment tima. Izgradio sam jezgro sistema u Laravelu i Reactu.",
+      "impact": "Uspješno lansirano za korisnike u SAD-u kao sigurna, produkcijski spremna platforma.",
+      "alt": "MyPassionMatch maketa proizvoda"
+    },
+    "vs": {
+      "problem": "Švicarskoj zdravstvenoj kompaniji je trebala sigurna SaaS aplikacija s više jezika.",
+      "solution": "Dizajniran backend u Laravelu i MySQL-u, implementiran CI/CD preko GitHub Actionsa te nadgledana cloud infrastruktura.",
+      "impact": "Isporučen potpuno funkcionalan SaaS kojem vjeruju pružaoci zdravstvenih usluga u Švicarskoj.",
+      "alt": "VitaSecura SaaS maketa"
+    },
+    "ak": {
+      "problem": "Bila je potrebna moderna, brza i SEO-optimizirana lična web stranica.",
+      "solution": "Dizajn i razvoj full-stack rješenja u Laravelu s prilagođenim UI-jem, fokus na mobilne performanse i SEO.",
+      "impact": "Isporučena visokoperformansna lična web stranica.",
+      "alt": "Maketa web stranice Amne Kolić"
+    },
+    "mk": {
+      "problem": "Bila je potrebna podrška za više jezika za njemačko/englesku korisničku bazu.",
+      "solution": "Implementirani procesi lokalizacije i prevođenja kako bi platforma bila dostupna u različitim regijama.",
+      "impact": "Proširena upotrebljivost i veće usvajanje u Austriji i Njemačkoj.",
+      "alt": "Maketa platforme Mykotheke"
+    },
+    "cb": {
+      "problem": "Evropskom energetskom startupu je trebala platforma za automatizaciju obračuna i finansijskog upravljanja za decentralizovane, zelene energetske zajednice.",
+      "solution": "Izgrađen demo POC: multi-tenant obračunski tokovi, administracija članova, analitički paneli i demo tok rezervacija. Backend u Spring Bootu + PostgreSQL, s intuitivnim UI/UX-om u skladu s Colibrie brendom.",
+      "impact": "Prikazan skalabilan MVP za automatizirano upravljanje energetskim zajednicama — osnivanje, upravljanje i analitika uz jednostavnost.",
+      "alt": "Maketa Colibrie energetske platforme"
+    }
+  },
+"contact": {
+    "head": {
+      "l1": "Stupi u",
+      "accent": "kontakt"
+    },
+    "sub": "Tražite medior full-stack softverskog inženjera ili CTO konsultanta? Hajde da razgovaramo.",
+    "cta": {
+      "email_accent": "Email",
+      "email_rest": "me",
+      "call_accent": "Pozovi",
+      "call_rest": "me",
+      "connect_accent": "Stupimo u",
+      "connect_rest": "kontakt",
+      "personal_accent": "Lični",
+      "personal_rest": "GitHub"
+    }
+  },
+"services": {
+    "lead": "Pomažem kompanijama da dizajniraju i isporuče sigurne, skalabilne i dugoročne softverske sisteme.",
+    "offered": "Usluge:",
+    "items": {
+      "backend": {
+        "title": "Backend inženjering",
+        "desc": "Laravel, Spring Boot (Kotlin), REST API, Redis"
+      },
+      "fullstack": {
+        "title": "Full-stack razvoj",
+        "desc": "Laravel + React, Inertia.js, kompletna web rješenja"
+      },
+      "arch": {
+        "title": "Sistemska arhitektura",
+        "desc": "Sigurne, održive i skalabilne infrastrukture"
+      },
+      "devops": {
+        "title": "DevOps i automatizacija",
+        "desc": "Docker, CI/CD, NGINX, Hetzner deploy"
+      },
+      "optsec": {
+        "title": "Optimizacija i sigurnost",
+        "desc": "WordPress i SaaS hardening performansi"
+      },
+      "l10n": {
+        "title": "Lokalizacija i i18n",
+        "desc": "Višejezična podrška za globalne platforme"
+      },
+      "lead": {
+        "title": "Liderstvo i mentorstvo",
+        "desc": "CTO smjernice, Agile vođenje tima, code review"
+      }
+    },
+    "hero": {
+      "mobile": {
+      "l1": "Gradimo",
+      "l2accent": "vaše",
+      "l2rest": "novo",
+      "l3": "skalabilno",
+      "l4": "rješenje"
+      },
+      "desktop": {
+      "l1": "Gradimo",
+      "l1accent": "vaše",
+      "l2": "novo",
+      "l2accent": "skalabilno",
+      "l3": "rješenje"
+      }
+    }
+  },
+"about": {
+    "intro": "Ja sam full-stack inženjer specijaliziran za backend sisteme, skalabilne infrastrukture i end-to-end isporuku proizvoda. Sa praktičnim iskustvom kao CTO, voditelj backend tima i samostalni developer, spajam tehničku stručnost sa liderskim vještinama i strategijom.",
+
+    "stack_title": "Moj tehnički stack uključuje:",
+    "backend": "Backend razvoj:",
+    "frontend": "Frontend razvoj:",
+    "devops": "DevOps i infrastruktura:",
+    "cloud": "Cloud i performanse:",
+    "leadership": "Liderstvo i saradnja:",
+    "closing": "Vjerujem u pisanje čistog, održivog koda i isporuku poslovne vrijednosti kroz tehnologiju.",
+
+    "hero": {
+      "l1": "Gradim",
+      "l2accent": "logiku",
+      "l2rest": "iza",
+      "l3accent": "web-a.",
+      "l4": "Upoznaj",
+      "l5accent": "me",
+      "l5rest": "bolje!"
+    }
+  },
+ "fallback": {
+    "title": {
+    "l1": "Stranica",
+    "l2": "zalutala",
+    "l3": "!"
+    },
+    "message": "Žao nam je, stranica koju tražite ne postoji.",
+    "home": "Početna"
+  }
+}

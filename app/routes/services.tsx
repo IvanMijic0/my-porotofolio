@@ -1,8 +1,11 @@
 import { memo } from "react";
 import type { Route } from "./+types/about-me";
 import { ScrollDownButton, ScrollShadow, TwoColPage } from "~/components";
+import { useTranslate } from "~/hooks";
 
 const ServicesLeft = memo(function ServicesLeft() {
+	const { t } = useTranslate();
+
 	return (
 		<section
 			id="profile"
@@ -11,10 +14,15 @@ const ServicesLeft = memo(function ServicesLeft() {
 		>
 			<ScrollShadow className="h-full w-full" contentClassName="h-full flex flex-col gap-8 px-4">
 				<p className="font-extralight text-2xl lg:text-3xl">
-					I help companies design and deliver secure, scalable, and future-proof software systems.
+					{t(
+						"services.lead",
+						"I help companies design and deliver secure, scalable, and future-proof software systems."
+					)}
 				</p>
 
-				<h3 className="text-3xl lg:text-4xl font-bold">Services Offered:</h3>
+				<h3 className="text-3xl lg:text-4xl font-bold">
+					{t("services.offered", "Services Offered:")}
+				</h3>
 				<ul
 					className="
 						    space-y-6
@@ -25,56 +33,91 @@ const ServicesLeft = memo(function ServicesLeft() {
 					<li className="flex items-start gap-5">
 						<span className="mt-[1.1rem] h-2 w-2 rounded-full bg-accent flex-shrink-0" />
 						<span>
-							<span className="text-accent">Backend Engineering</span>
-							<span> — Laravel, Spring Boot (Kotlin), REST APIs, Redis</span>
+							<span className="text-accent">
+								{t("services.items.backend.title", "Backend Engineering")}
+							</span>
+							<span>
+								{" "}
+								— {t("services.items.backend.desc", "Laravel, Spring Boot (Kotlin), REST APIs, Redis")}
+							</span>
 						</span>
 					</li>
 
 					<li className="flex items-start gap-4">
 						<span className="mt-[1.1rem] h-2 w-2 rounded-full bg-accent flex-shrink-0" />
 						<span>
-							<span className="text-accent">Full-Stack Development</span>
-							<span> — Laravel + React, Inertia.js, complete web solutions</span>
+							<span className="text-accent">
+								{t("services.items.fullstack.title", "Full-Stack Development")}
+							</span>
+							<span>
+								{" "}
+								— {t("services.items.fullstack.desc", "Laravel + React, Inertia.js, complete web solutions")}
+							</span>
 						</span>
 					</li>
 
 					<li className="flex items-start gap-4">
 						<span className="mt-[1.1rem] h-2 w-2 rounded-full bg-accent flex-shrink-0" />
 						<span>
-							<span className="text-accent">System Architecture</span>
-							<span> — Secure, maintainable, and scalable infrastructures</span>
+							<span className="text-accent">
+								{t("services.items.arch.title", "System Architecture")}
+							</span>
+							<span>
+								{" "}
+								— {t("services.items.arch.desc", "Secure, maintainable, and scalable infrastructures")}
+							</span>
 						</span>
 					</li>
 
 					<li className="flex items-start gap-4">
 						<span className="mt-[1.1rem] h-2 w-2 rounded-full bg-accent flex-shrink-0" />
 						<span>
-							<span className="text-accent">DevOps & Automation</span>
-							<span> — Docker, CI/CD pipelines, NGINX, Hetzner deployments</span>
+							<span className="text-accent">
+								{t("services.items.devops.title", "DevOps & Automation")}
+							</span>
+							<span>
+								{" "}
+								— {t("services.items.devops.desc", "Docker, CI/CD pipelines, NGINX, Hetzner deployments")}
+							</span>
 						</span>
 					</li>
 
 					<li className="flex items-start gap-4">
 						<span className="mt-[1.1rem] h-2 w-2 rounded-full bg-accent flex-shrink-0" />
 						<span>
-							<span className="text-accent">Optimization & Security</span>
-							<span> — WordPress & SaaS performance hardening</span>
+							<span className="text-accent">
+								{t("services.items.optsec.title", "Optimization & Security")}
+							</span>
+							<span>
+								{" "}
+								— {t("services.items.optsec.desc", "WordPress & SaaS performance hardening")}
+							</span>
 						</span>
 					</li>
 
 					<li className="flex items-start gap-4">
 						<span className="mt-[1.1rem] h-2 w-2 rounded-full bg-accent flex-shrink-0" />
 						<span>
-							<span className="text-accent">Localization & Internationalization</span>
-							<span> — Multi-language support for global platforms</span>
+							<span className="text-accent">
+								{t("services.items.l10n.title", "Localization & Internationalization")}
+							</span>
+							<span>
+								{" "}
+								— {t("services.items.l10n.desc", "Multi-language support for global platforms")}
+							</span>
 						</span>
 					</li>
 
 					<li className="flex items-start gap-4">
 						<span className="mt-[1.1rem] h-2 w-2 rounded-full bg-accent flex-shrink-0" />
 						<span>
-							<span className="text-accent">Leadership & Mentorship</span>
-							<span> — CTO-level guidance, Agile team leadership, code reviews</span>
+							<span className="text-accent">
+								{t("services.items.lead.title", "Leadership & Mentorship")}
+							</span>
+							<span>
+								{" "}
+								— {t("services.items.lead.desc", "CTO-level guidance, Agile team leadership, code reviews")}
+							</span>
 						</span>
 					</li>
 				</ul>
@@ -84,6 +127,8 @@ const ServicesLeft = memo(function ServicesLeft() {
 });
 
 const ServicesRight = memo(function ServicesRight() {
+	const { t } = useTranslate();
+
 	return (
 		<section
 			aria-labelledby="services-title"
@@ -92,22 +137,22 @@ const ServicesRight = memo(function ServicesRight() {
 			<h1 id="services-title" className="text-5xl lg:text-7xl font-bold leading-tight">
 				<span className="flex flex-col gap-4 text-5xl leading-tight lg:hidden">
 					<span>
-						Let&apos;s build <br />
-						<span className="text-accent">your </span>
-						next
+						{t("services.hero.mobile.l1", "Let's build")} <br />
+						<span className="text-accent">{t("services.hero.mobile.l2accent", "your")} </span>
+						{t("services.hero.mobile.l2rest", "next")}
 						<br />
-						<span className="text-accent">scalable</span>
+						<span className="text-accent">{t("services.hero.mobile.l3", "scalable")}</span>
 						<br />
-						<span className="text-accent">solution</span>
+						<span className="text-accent">{t("services.hero.mobile.l4", "solution")}</span>
 					</span>
 				</span>
 
 				<span className="hidden lg:block text-5xl lg:text-8xl">
-					Let&apos;s build <span className="text-accent">your</span>
+					{t("services.hero.desktop.l1", "Let's build")} <span className="text-accent">{t("services.hero.desktop.l1accent", "your")}</span>
 					<br />
-					next <span className="text-accent">scalable</span>
+					{t("services.hero.desktop.l2", "next")} <span className="text-accent">{t("services.hero.desktop.l2accent", "scalable")}</span>
 					<br />
-					<span className="text-accent">solution</span>
+					<span className="text-accent">{t("services.hero.desktop.l3", "solution")}</span>
 				</span>
 			</h1>
 

@@ -1,8 +1,11 @@
 import { Laravel, Springboot, TwoColPage, React, Redpanda, Hadoop, Elasticsearch } from "~/components";
 import type { Route } from "./+types/home";
 import { memo } from "react";
+import { useTranslate } from "~/hooks";
 
 const HomeLeft = memo(function HomeLeft() {
+	const { t } = useTranslate();
+
 	return (
 		<section
 			id="expertise"
@@ -10,7 +13,7 @@ const HomeLeft = memo(function HomeLeft() {
 			className="w-full flex flex-col gap-12 justify-start lg:py-36 pt-8 pb-12 px-4 lg:px-10 items-start"
 		>
 			<h2 id="expertise-title" className="text-4xl">
-				Expertise
+				{t("home.expertiseTitle", "Expertise")}
 			</h2>
 			<div className='w-full flex justify-center lg:block'>
 				<ul className="lg:px-20 grid grid-cols-2 gap-12 lg:gap-28">
@@ -85,6 +88,8 @@ const HomeLeft = memo(function HomeLeft() {
 
 
 const HomeRight = memo(function HomeRight() {
+	const { t } = useTranslate();
+
 	return (
 		<section
 			className="flex flex-col lg:gap-7 w-full px-12 py-10 lg:px-28"
@@ -96,15 +101,17 @@ const HomeRight = memo(function HomeRight() {
 				className="w-full font-semibold lg:font-bold flex flex-col lg:gap-4 leading-tight"
 			>
 				<span className="text-5xl lg:text-7xl">
-					<span className="text-accent">Logic</span>-Driven
+					<span className="text-accent">{t("home.logic", "Logic")}</span>-{t("home.driven", "Driven")}
 				</span>
 				<span className="text-5xl lg:text-7xl">
-					Design-<span className="text-accent">Conscious</span>
+					{t("home.design", "Design")}-<span className="text-accent">{t("home.conscious", "Conscious")}</span>
 				</span>
-				<span className="text-3xl lg:text-6xl w-40 lg:w-auto font-light lg:font-bold">Engineering done right</span>
+				<span className="text-3xl lg:text-6xl w-40 lg:w-auto font-light lg:font-bold">
+					{t("home.engineering", "Engineering done right")}
+				</span>
 			</h1>
 			<h3 className="text-md mt-4 lg:mt-0 lg:text-3xl w-28 lg:w-auto font-extralight lg:font-light lg:pl-1">
-				Medior Software Engineer with CTO Experience
+				{t("home.subtitle", "Medior Software Engineer with CTO Experience")}
 			</h3>
 		</section>
 	);
