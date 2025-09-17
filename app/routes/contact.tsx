@@ -22,11 +22,11 @@ const ContactLeft = memo(function ContactLeft() {
 		<section
 			id="profile"
 			aria-labelledby="profile-title"
-			className="w-full h-screen min-h-0 lg:pt-48 pb-6"
+			className="w-full min-h-0 lg:pt-48 pb-6"
 		>
 			<ScrollShadow
-				className="h-full w-full"
-				contentClassName="h-full flex flex-col items-center justify-start gap-12"
+				className="h-[calc(100vh-31rem)] w-full"
+				contentClassName="h-full flex flex-row lg:flex-col lg:items-center justify-start gap-2 lg:gap-12"
 			>
 				{[
 					{
@@ -61,7 +61,7 @@ const ContactLeft = memo(function ContactLeft() {
 						to={to}
 						target={external ? "_blank" : undefined}
 						rel={external ? "noopener noreferrer" : undefined}
-						className="flex items-center w-full lg:w-[22rem] gap-8"
+						className="flex flex-col lg:flex-row items-center w-full lg:w-[22rem] gap-4 lg:gap-8"
 					>
 						<ButtonSquircleContainer
 							width={buttonSize}
@@ -71,7 +71,7 @@ const ContactLeft = memo(function ContactLeft() {
 							<Icon className="w-9 h-9 lg:w-11 lg:h-11" />
 						</ButtonSquircleContainer>
 
-						<p className="flex-1 text-md lg:text-2xl text-[#BDBDBD] text-left">
+						<p className="text-md lg:text-2xl text-[#BDBDBD] text-center lg:text-left flex-1">
 							<span className="text-accent">{accent}</span> {rest}
 						</p>
 					</Link>
