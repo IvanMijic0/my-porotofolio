@@ -16,48 +16,6 @@ const ProjectsLeft = memo(function ProjectsLeft() {
 				className="h-full w-full"
 				contentClassName="h-full flex flex-col items-start gap-6 lg:gap-12 px-4"
 			>
-				<div className="w-full flex flex-col-reverse gap-1 lg:gap-0 lg:flex-row justify-between items-start lg:items-center">
-					<h3 className="text-3xl lg:text-4xl font-bold">
-						<span className="text-accent">MyPassionMatch</span> - CTO
-					</h3>
-					<ExternalLinkButton
-						href="https://mypassionmatch.com"
-						ariaLabel={t("projects.aria.open", "Open website")}
-					/>
-				</div>
-				<div className="flex flex-col gap-8 lg:text-3xl items-start">
-					<div>
-						<p className="font-bold">{t("projects.labels.problem", "Problem")}:</p>
-						<p className="font-extralight">
-							{t("projects.mpm.problem", "A U.S.-based startup needed a scalable matchmaking platform.")}
-						</p>
-					</div>
-					<div>
-						<p className="font-bold">{t("projects.labels.solution", "Solution")}:</p>
-						<p className="font-extralight">
-							{t(
-								"projects.mpm.solution",
-								"Led backend architecture, DevOps pipelines, and team management. Built the core system with Laravel & React."
-							)}
-						</p>
-					</div>
-					<div>
-						<p className="font-bold">{t("projects.labels.impact", "Impact")}:</p>
-						<p className="font-extralight">
-							{t(
-								"projects.mpm.impact",
-								"Successfully launched to U.S. users with a secure, production-ready platform."
-							)}
-						</p>
-					</div>
-				</div>
-				<img
-					src="/mockup-dating.webp"
-					alt={t("projects.mpm.alt", "MyPassionMatch product mockup")}
-					loading="lazy"
-					decoding="async"
-					className="w-full h-auto"
-				/>
 				<div className="w-full mt-12 lg:mt-0 flex flex-col-reverse gap-1 lg:gap-0 lg:flex-row justify-between items-start lg:items-center">
 					<h3 className="text-3xl lg:text-4xl font-bold">
 						<span className="text-accent">VitaSecura</span> - CTO
@@ -100,6 +58,49 @@ const ProjectsLeft = memo(function ProjectsLeft() {
 					decoding="async"
 					className="w-full h-auto"
 				/>
+				<div className="w-full flex flex-col-reverse gap-1 lg:gap-0 lg:flex-row justify-between items-start lg:items-center">
+					<h3 className="text-3xl lg:text-4xl font-bold">
+						<span className="text-accent">MyPassionMatch</span> - CTO
+					</h3>
+					<ExternalLinkButton
+						href="https://mypassionmatch.com"
+						ariaLabel={t("projects.aria.open", "Open website")}
+					/>
+				</div>
+				<div className="flex flex-col gap-8 lg:text-3xl items-start">
+					<div>
+						<p className="font-bold">{t("projects.labels.problem", "Problem")}:</p>
+						<p className="font-extralight">
+							{t("projects.mpm.problem", "A U.S.-based startup needed a scalable matchmaking platform.")}
+						</p>
+					</div>
+					<div>
+						<p className="font-bold">{t("projects.labels.solution", "Solution")}:</p>
+						<p className="font-extralight">
+							{t(
+								"projects.mpm.solution",
+								"Led backend architecture, DevOps pipelines, and team management. Built the core system with Laravel & React."
+							)}
+						</p>
+					</div>
+					<div>
+						<p className="font-bold">{t("projects.labels.impact", "Impact")}:</p>
+						<p className="font-extralight">
+							{t(
+								"projects.mpm.impact",
+								"Successfully launched to U.S. users with a secure, production-ready platform."
+							)}
+						</p>
+					</div>
+				</div>
+				<img
+					src="/mockup-dating.webp"
+					alt={t("projects.mpm.alt", "MyPassionMatch product mockup")}
+					loading="lazy"
+					decoding="async"
+					className="w-full h-auto"
+				/>
+
 				<div className="w-full mt-12 lg:mt-0 flex flex-col-reverse gap-1 lg:gap-0 lg:flex-row justify-between items-start lg:items-center">
 					<h3 className="text-3xl lg:text-4xl font-bold">
 						<span className="text-accent">Amna Kolić</span> - {t("projects.role.independent", "Independent Project")}
