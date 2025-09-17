@@ -60,7 +60,7 @@ const TwoColPage = memo(function TwoColPage({
 							{left}
 						</div>
 					</TallSquircleContainer>
-					: <div className={clsx("min-w-0 w-full min-h-[calc(100svh-31rem)] flex", className)} style={{ minHeight: "-webkit-fill-available" }}>
+					: <div className={clsx("min-w-0 w-full min-h-[calc(100dvh-31rem)] flex", className)} style={{ minHeight: "-webkit-fill-available" }}>
 						{left}
 					</div>
 				}
