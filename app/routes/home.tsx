@@ -95,22 +95,22 @@ const HomeRight = memo(function HomeRight() {
 			className="flex flex-col lg:gap-7 w-full px-12 py-10 lg:px-28"
 			aria-labelledby="hero-title"
 		>
-			<h2 className="text-lg lg:text-3xl font-extralight lg:font-light lg:pl-1">Ivan Mijić</h2>
+			<h2 className="text-lg lg:text-2xl font-extralight lg:font-light lg:pl-1">Ivan Mijić</h2>
 			<h1
 				id="hero-title"
 				className="w-full font-semibold lg:font-bold flex flex-col lg:gap-4 leading-tight"
 			>
-				<span className="text-5xl lg:text-7xl">
+				<span className="text-5xl lg:text-6xl">
 					<span className="text-accent">{t("home.logic", "Logic")}</span>-{t("home.driven", "Driven")}
 				</span>
-				<span className="text-5xl lg:text-7xl">
+				<span className="text-5xl lg:text-6xl">
 					{t("home.design", "Design")}-<span className="text-accent">{t("home.conscious", "Conscious")}</span>
 				</span>
-				<span className="text-3xl lg:text-6xl w-40 lg:w-auto font-light lg:font-bold">
+				<span className="text-3xl lg:text-5xl w-40 lg:w-auto font-light lg:font-bold">
 					{t("home.engineering", "Engineering done right")}
 				</span>
 			</h1>
-			<h2 className="text-md mt-4 lg:mt-0 lg:text-3xl w-28 lg:w-auto font-extralight lg:font-light lg:pl-1">
+			<h2 className="text-md mt-4 lg:mt-0 lg:text-2xl w-28 lg:w-auto font-extralight lg:font-light lg:pl-1">
 				{t("home.subtitle", "Medior Software Engineer with CTO Experience")}
 			</h2>
 		</section>

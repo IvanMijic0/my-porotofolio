@@ -23,7 +23,7 @@ const buildPathWithLang = (pathname: string, to: Lang) => {
 	return "/" + segs.join("/");
 };
 
-const LanguageToggleButton = ({ width = 60, height = 60 }: Props) => {
+const LanguageToggleButton = ({ width, height }: Props) => {
 	const location = useLocation();
 	const navigate = useNavigate();
 

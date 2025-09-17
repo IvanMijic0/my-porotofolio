@@ -147,7 +147,7 @@ const ServicesRight = memo(function ServicesRight() {
 					</span>
 				</span>
 
-				<span className="hidden lg:block text-5xl lg:text-8xl">
+				<span className="hidden lg:block text-5xl lg:text-7xl">
 					{t("services.hero.desktop.l1", "Let's build")} <span className="text-accent">{t("services.hero.desktop.l1accent", "your")}</span>
 					<br />
 					{t("services.hero.desktop.l2", "next")} <span className="text-accent">{t("services.hero.desktop.l2accent", "scalable")}</span>

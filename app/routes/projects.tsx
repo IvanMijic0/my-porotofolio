@@ -253,7 +253,7 @@ const ProjectsRight = memo(function ProjectsRight() {
 					</span>
 				</span>
 
-				<span className="hidden lg:block text-5xl lg:text-8xl">
+				<span className="hidden lg:block text-5xl lg:text-6xl">
 					{t("projects.head.desktop.l1", "Step into the")}
 					<br />
 					{t("projects.head.desktop.l2", "world of")} <span className="text-accent">{t("projects.head.desktop.l3", "my")}</span>

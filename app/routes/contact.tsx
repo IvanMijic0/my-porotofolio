@@ -98,12 +98,12 @@ const ContactRight = memo(function ContactRight() {
 		>
 			<div className="flex flex-col gap-6 lg:gap-16 h-full">
 				<h1 id="services-title" className="text-5xl lg:text-7xl font-bold leading-tight">
-					<span className="block text-5xl lg:text-8xl">
+					<span className="block text-5xl lg:text-7xl">
 						{t("contact.head.l1", "Get in")}{" "}
 						<span className="text-accent">{t("contact.head.accent", "Touch")}</span>
 					</span>
 				</h1>
-				<p className="text-lg lg:text-3xl font-extralight w-5/6 lg:w-4/5">
+				<p className="text-lg lg:text-2xl font-extralight w-5/6 lg:w-4/5">
 					{t(
 						"contact.sub",
 						"Looking for a mid-level full-stack software engineer, or CTO-level consultant? Let’s talk."
