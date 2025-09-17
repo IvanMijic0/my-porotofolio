@@ -25,7 +25,7 @@ const ContactLeft = memo(function ContactLeft() {
 			className="w-full min-h-0 lg:pt-48 pb-6"
 		>
 			<ScrollShadow
-				className="h-[calc(100vh-31rem)] w-full"
+				className="h-[calc(100vh-31rem) lg:h-auto w-full"
 				contentClassName="h-full flex flex-row lg:flex-col lg:items-center justify-start gap-2 lg:gap-12"
 			>
 				{[
