@@ -22,11 +22,14 @@ const ContactLeft = memo(function ContactLeft() {
 		<section
 			id="profile"
 			aria-labelledby="profile-title"
-			className="w-full min-h-0 lg:pt-48 pb-6"
+			className="w-full py-12 lg:pt-48"
 		>
 			<ScrollShadow
-				className="h-[calc(100dvh-31rem)] w-full"
-				contentClassName="h-full flex flex-row lg:flex-col lg:items-center justify-start gap-2 lg:gap-12"
+				className="h-full w-full"
+				contentClassName="
+					    grid grid-cols-2 gap-y-20 place-items-center
+					    lg:flex lg:flex-col lg:items-center lg:justify-start lg:gap-16
+					  "
 			>
 				{[
 					{
@@ -61,7 +64,10 @@ const ContactLeft = memo(function ContactLeft() {
 						to={to}
 						target={external ? "_blank" : undefined}
 						rel={external ? "noopener noreferrer" : undefined}
-						className="flex flex-col lg:flex-row items-center w-full lg:w-[22rem] gap-4 lg:gap-8"
+						className="
+							flex flex-col items-center gap-3 w-full max-w-[11rem] text-center
+							lg:flex-row lg:items-center lg:max-w-[24rem] lg:gap-8 lg:text-left
+						      "
 					>
 						<ButtonSquircleContainer
 							width={buttonSize}
@@ -71,7 +77,7 @@ const ContactLeft = memo(function ContactLeft() {
 							<Icon className="w-9 h-9 lg:w-11 lg:h-11" />
 						</ButtonSquircleContainer>
 
-						<p className="text-md lg:text-2xl text-[#BDBDBD] text-center lg:text-left flex-1">
+						<p className="text-md lg:text-2xl text-[#BDBDBD]">
 							<span className="text-accent">{accent}</span> {rest}
 						</p>
 					</Link>

@@ -94,7 +94,7 @@ const TwoColPage = memo(function TwoColPage({
 					</div>
 
 				}
-				{!isMobile && <nav className="mt-6" aria-label="Primary">
+				{!isMobile && <nav className="mt-6 z-50" aria-label="Primary">
 					<ul className="grid grid-cols-3 w-[60%] gap-y-12 gap-x-6 pl-24">
 						{SiteConfig.useNavElements().map(({ label, path, icon: Icon, accent, special }) => {
 							const to = NavHelper.normalize(`/${lang}${path ? `/${path}` : ""}`);

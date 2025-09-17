@@ -85,7 +85,7 @@ const AboutRight = memo(function AboutRight() {
 				<span className="flex flex-col gap-4 text-4xl leading-tight lg:hidden">
 					<span>
 						{t("about.hero.l1", "I build")}{" "}
-						<span className="text-accent">{t("about.hero.l2accent", "the logic ")}</span>
+						<span className="text-accent">{t("about.hero.l2accent", "the logic ")}</span>{" "}
 						{t("about.hero.l2rest", "behind")}{" "}
 						<span className="text-accent">{t("about.hero.l3accent", "the web.")}</span>
 					</span>

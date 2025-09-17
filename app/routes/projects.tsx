@@ -16,7 +16,7 @@ const ProjectsLeft = memo(function ProjectsLeft() {
 				className="h-full w-full"
 				contentClassName="h-full flex flex-col items-start gap-6 lg:gap-12 px-4"
 			>
-				<div className="w-full mt-12 lg:mt-0 flex flex-col-reverse gap-1 lg:gap-0 lg:flex-row justify-between items-start lg:items-center">
+				<div className="w-full lg:mt-0 flex flex-col-reverse gap-1 lg:gap-0 lg:flex-row justify-between items-start lg:items-center">
 					<h3 className="text-3xl lg:text-4xl font-bold">
 						<span className="text-accent">VitaSecura</span> - CTO
 					</h3>
@@ -58,7 +58,7 @@ const ProjectsLeft = memo(function ProjectsLeft() {
 					decoding="async"
 					className="w-full h-auto"
 				/>
-				<div className="w-full flex flex-col-reverse gap-1 lg:gap-0 lg:flex-row justify-between items-start lg:items-center">
+				<div className="w-full mt-12 flex flex-col-reverse gap-1 lg:gap-0 lg:flex-row justify-between items-start lg:items-center">
 					<h3 className="text-3xl lg:text-4xl font-bold">
 						<span className="text-accent">MyPassionMatch</span> - CTO
 					</h3>

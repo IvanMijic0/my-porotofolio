@@ -13,7 +13,7 @@ const hexToNormalizedRGB = (hex: string): NormalizedRGB => {
 	return [r, g, b];
 };
 
-interface UniformValue<T = number | Color> {
+type UniformValue<T = number | Color> = {
 	value: T;
 }
 

@@ -8,7 +8,7 @@ import clsx from "clsx";
 import { ButtonSquircleContainer, Logo } from "~/components/assets";
 import { NavHelper } from "~/helpers";
 
-const LOADER_MS = 100;
+const LOADER_MS = 200;
 
 const Layout = () => {
 	const isMobile = useIsMobile("lg");
@@ -72,14 +72,10 @@ const Layout = () => {
 			</AnimatePresence>
 			<div className="pointer-events-none fixed inset-0 -z-10">
 				<Silk
-					backgroundMode
-					className="fixed inset-0"
 					color="#292929"
 					speed={1}
 					scale={0.5}
 					noiseIntensity={0.4}
-					wobble={0.075}   // tweak 0.06–0.09 for more/less motion
-					detail={1.0}
 				/>
 			</div>
 			<div className="relative z-10 h-full w-full">
