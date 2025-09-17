@@ -16,7 +16,7 @@ const ContactLeft = memo(function ContactLeft() {
 	const isMobile = useIsMobile();
 	const { t } = useTranslate();
 
-	const buttonSize = isMobile ? 60 : 110;
+	const buttonSize = isMobile ? 60 : 80;
 
 	return (
 		<section
@@ -26,63 +26,56 @@ const ContactLeft = memo(function ContactLeft() {
 		>
 			<ScrollShadow
 				className="h-full w-full"
-				contentClassName="h-full flex flex-row lg:flex-col lg:items-center justify-between lg:justify-start lg:gap-6 lg:gap-12"
+				contentClassName="h-full flex flex-col items-center justify-start gap-12"
 			>
-				<Link
-					to="mailto:contact@ivan-mijic.com"
-					className="flex flex-col lg:flex-row w-full items-center lg:w-1/2 gap-4 lg:gap-12"
-				>
-					<ButtonSquircleContainer width={buttonSize} height={buttonSize}>
-						<Mail className="w-9 h-9 lg:w-auto lg:h-auto" />
-					</ButtonSquircleContainer>
-					<p className="text-lg lg:text-3xl text-[#BDBDBD] text-center">
-						<span className="text-accent">{t("contact.cta.email_accent", "Email")}</span>{" "}
-						{t("contact.cta.email_rest", "me")}
-					</p>
-				</Link>
+				{[
+					{
+						to: "mailto:contact@ivan-mijic.com",
+						Icon: Mail,
+						accent: t("contact.cta.email_accent", "Email"),
+						rest: t("contact.cta.email_rest", "me"),
+					},
+					{
+						to: "tel:+387603025624",
+						Icon: ContactIcon,
+						accent: t("contact.cta.call_accent", "Call"),
+						rest: t("contact.cta.call_rest", "me"),
+					},
+					{
+						to: "https://www.linkedin.com/in/ivan-miji%C4%871/",
+						Icon: Linkedin,
+						accent: t("contact.cta.connect_accent", "Connect"),
+						rest: t("contact.cta.connect_rest", "with me"),
+						external: true,
+					},
+					{
+						to: "https://github.com/IvanMijic0",
+						Icon: Github,
+						accent: t("contact.cta.personal_accent", "Personal"),
+						rest: t("contact.cta.personal_rest", "GitHub"),
+						external: true,
+					},
+				].map(({ to, Icon, accent, rest, external }) => (
+					<Link
+						key={accent}
+						to={to}
+						target={external ? "_blank" : undefined}
+						rel={external ? "noopener noreferrer" : undefined}
+						className="flex items-center w-full lg:w-[22rem] gap-8"
+					>
+						<ButtonSquircleContainer
+							width={buttonSize}
+							height={buttonSize}
+							className="shrink-0"
+						>
+							<Icon className="w-9 h-9 lg:w-11 lg:h-11" />
+						</ButtonSquircleContainer>
 
-				<Link
-					to="tel:+387603025624"
-					className="flex flex-col lg:flex-row items-center w-full lg:w-1/2 gap-4 lg:gap-12"
-				>
-					<ButtonSquircleContainer width={buttonSize} height={buttonSize}>
-						<ContactIcon className="w-9 h-9 lg:w-auto lg:h-auto" />
-					</ButtonSquircleContainer>
-					<p className="text-lg lg:text-3xl text-[#BDBDBD] text-center">
-						<span className="text-accent">{t("contact.cta.call_accent", "Call")}</span>{" "}
-						{t("contact.cta.call_rest", "me")}
-					</p>
-				</Link>
-
-				<Link
-					to="https://www.linkedin.com/in/ivan-miji%C4%871/"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="flex flex-col lg:flex-row items-center w-full lg:w-1/2 gap-2 lg:gap-12"
-				>
-					<ButtonSquircleContainer width={buttonSize} height={buttonSize}>
-						<Linkedin className="w-9 h-9 lg:w-auto lg:h-auto" />
-					</ButtonSquircleContainer>
-					<p className="text-md lg:text-3xl text-[#BDBDBD] w-2/3 text-center">
-						<span className="text-accent">{t("contact.cta.connect_accent", "Connect")}</span>{" "}
-						{t("contact.cta.connect_rest", "with me")}
-					</p>
-				</Link>
-
-				<Link
-					to="https://github.com/IvanMijic0"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="flex flex-col lg:flex-row items-center w-full lg:w-1/2 gap-2 lg:gap-12"
-				>
-					<ButtonSquircleContainer width={buttonSize} height={buttonSize}>
-						<Github className="w-9 h-9 lg:w-auto lg:h-auto" />
-					</ButtonSquircleContainer>
-					<p className="text-md lg:text-3xl text-[#BDBDBD] text-center">
-						<span className="text-accent">{t("contact.cta.personal_accent", "Personal")}</span>{" "}
-						{t("contact.cta.personal_rest", "GitHub")}
-					</p>
-				</Link>
+						<p className="flex-1 text-md lg:text-2xl text-[#BDBDBD] text-left">
+							<span className="text-accent">{accent}</span> {rest}
+						</p>
+					</Link>
+				))}
 			</ScrollShadow>
 		</section>
 	);
