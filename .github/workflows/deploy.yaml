@@ -1,4 +1,4 @@
-name: Build & Deploy
+name: Build & Deploy (no external actions)
 
 on:
   push:
@@ -10,37 +10,45 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
+      packages: write   
       id-token: write
+
+    env:
+      IMAGE: ghcr.io/${{ github.repository_owner }}/my-portofolio:latest
+      REPO: ${{ github.repository }}
+      SHA: ${{ github.sha }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        run: |
+          set -e
+          git init repo
+          cd repo
+          git remote add origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${REPO}.git
+          git fetch --no-tags --prune --depth=1 origin "${GITHUB_REF##*/}"
+          git checkout -qf $SHA
 
-      - name: Log in to GHCR
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Login to GHCR
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
 
-      - name: Build & push image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/my-portofolio:latest
+      - name: Build & Push image
+        working-directory: repo
+        run: |
+          set -e
+          docker build -t "$IMAGE" .
+          docker push "$IMAGE"
 
-      - name: Remote deploy
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
+      - name: Deploy over SSH
+        run: |
+          set -e
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" '
             set -e
-            docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-            docker pull ghcr.io/${{ github.repository_owner }}/my-portofolio:latest
+            docker login ghcr.io -u "'"${GITHUB_ACTOR}"'" -p "'"${{ secrets.GITHUB_TOKEN }}"'"
+            docker pull "'"$IMAGE"'"
             docker compose -f /opt/apps/my-portfolio/docker-compose.yml up -d
             docker image prune -f
+          '
