@@ -1,14 +1,12 @@
 import { memo, type CSSProperties, type ReactNode } from "react";
 import clsx from "clsx";
 
-type Fit = "contain" | "cover";
-
-type ModalContainerProps = {
+type ModalSquircleContainerProps = {
 	children?: ReactNode;
 	className?: string;
 	height?: number | string;
 	aspectRatio?: number;
-	fit?: Fit;
+	fit?: "contain" | "cover";
 	fill?: string;
 	fillOpacity?: number;
 	stroke?: string;
@@ -17,78 +15,57 @@ type ModalContainerProps = {
 	strokeWidth?: number;
 };
 
-const NATIVE_W = 319;
-const NATIVE_H = 364;
-const NATIVE_RATIO = NATIVE_W / NATIVE_H;
+const ModalSquircleContainer = memo(
+	({
+		children,
+		className,
+		height,
+		aspectRatio = 319 / 364,
+		fit = "contain",
+		fill = "#252525",
+		fillOpacity = 0.9,
+		stroke = "#454545",
+		strokeOpacity = 1,
+		radius = 53.5,
+		strokeWidth = 1,
+	}: ModalSquircleContainerProps) => {
+		const style: CSSProperties = {
+			width: "100%",
+			...(height == null ? { aspectRatio: String(aspectRatio) } : { height }),
+		};
 
-const ModalSquircleContainer = memo(function ModalContainer({
-	children,
-	className,
-	height,
-	aspectRatio = NATIVE_RATIO,
-	fit = "contain",
-	fill = "#252525",
-	fillOpacity = 0.9,
-	stroke = "#454545",
-	strokeOpacity = 1,
-	radius = 53.5,
-	strokeWidth = 1,
-}: ModalContainerProps) {
-	const style: CSSProperties = { width: "100%" };
-	if (height == null) style.aspectRatio = String(aspectRatio);
-	else style.height = typeof height === "number" ? `${height}px` : height;
-
-	const preserve = fit === "cover" ? "xMidYMid slice" : "xMidYMid meet";
-
-	return (
-		<div className={clsx("relative w-full", className)} style={style}>
-			<svg
-				aria-hidden="true"
-				className="absolute inset-0 h-full w-full"
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox={`0 0 ${NATIVE_W} ${NATIVE_H}`}
-				preserveAspectRatio={preserve}
+		return (
+			<div
+				className={clsx(
+					"relative w-full rounded-[53.5px] overflow-hidden isolate",
+					className
+				)}
+				style={style}
 			>
-				<rect
-					x="0.5"
-					y="0.5"
-					width={NATIVE_W - 1}
-					height={NATIVE_H - 1}
-					rx={radius}
-					fill={fill}
-					fillOpacity={fillOpacity}
-					stroke={stroke}
-					strokeOpacity={strokeOpacity}
-					strokeWidth={strokeWidth}
-				/>
-				<defs>
-					<clipPath id="modal-clip">
-						<rect
-							x="0.5"
-							y="0.5"
-							width={NATIVE_W - 1}
-							height={NATIVE_H - 1}
-							rx={radius}
-						/>
-					</clipPath>
-				</defs>
-				<foreignObject
-					x="0.5"
-					y="0.5"
-					width={NATIVE_W - 1}
-					height={NATIVE_H - 1}
-					clipPath="url(#modal-clip)"
+				<svg
+					aria-hidden="true"
+					className="absolute inset-0 h-full w-full pointer-events-none"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 319 364"
+					preserveAspectRatio={fit === "cover" ? "xMidYMid slice" : "xMidYMid meet"}
 				>
-					<div
-						className="h-full w-full flex items-center justify-center"
-						style={{ overflow: "hidden" }}
-					>
-						{children}
-					</div>
-				</foreignObject>
-			</svg>
-		</div>
-	);
-});
+					<rect
+						x="0.5"
+						y="0.5"
+						width="318"
+						height="363"
+						rx={radius}
+						fill={fill}
+						fillOpacity={fillOpacity}
+						stroke={stroke}
+						strokeOpacity={strokeOpacity}
+						strokeWidth={strokeWidth}
+					/>
+				</svg>
+				<div className="relative z-10 h-full w-full">{children}</div>
+			</div>
+		);
+	}
+);
 
 export default ModalSquircleContainer;

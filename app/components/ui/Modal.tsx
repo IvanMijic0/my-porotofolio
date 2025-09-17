@@ -96,10 +96,8 @@ const Modal = memo(function Modal({
 		<AnimatePresence>
 			{isOpen && (
 				<motion.div
-					className={clsx(
-						"fixed inset-0 z-[9999] flex items-center justify-center",
-						"bg-black/50 backdrop-blur-sm"
-					)}
+
+					className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm isolate"
 					onMouseDown={onBackdropClick}
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
@@ -135,7 +133,7 @@ const Modal = memo(function Modal({
 							strokeWidth={strokeWidth}
 							className="shadow-2xl"
 						>
-							<div className={clsx("p-6 sm:p-8", className)}>{children}</div>
+							<div className={clsx("p-6 sm:p-8 h-full flex justify-center items-center ", className)}>{children}</div>
 						</ModalSquircleContainer>
 					</motion.div>
 				</motion.div>

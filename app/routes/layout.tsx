@@ -110,8 +110,8 @@ const Layout = () => {
 
 										return (
 											<ButtonSquircleContainer
-												width={50}
-												height={50}
+												width={60}
+												height={60}
 												fillOpacity={isActive ? 1 : accent ? 0.8 : 1}
 												fill={
 													isSpecial
@@ -174,7 +174,7 @@ const Layout = () => {
 						);
 					})}
 					<li className="flex flex-col gap-4 items-center">
-						<LanguageToggleButton width={50} height={50} />
+						<LanguageToggleButton width={60} height={60} />
 						<p className="text-sm text-center text-unfocus">Language</p>
 					</li>
 				</ul>
