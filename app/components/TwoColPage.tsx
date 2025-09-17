@@ -186,7 +186,7 @@ const TwoColPage = memo(function TwoColPage({
 					className="pointer-events-none absolute lg:fixed -right-10 lg:right-10 bottom-0 z-0"
 				>
 					<img
-						src="/ivan_mijic.webp"
+						src={isMobile ? "/ivan_mijic_mobile.webp" : "/ivan_mijic.webp"}
 						alt="Ivan Mijić — Software Engineer"
 						decoding="async"
 						fetchPriority="high"

@@ -24,6 +24,9 @@ export const links: Route.LinksFunction = () => [
 		type: "font/woff2",
 		crossOrigin: "anonymous",
 	},
+	{ rel: "preload", as: "image", href: "/ivan_mijic_mobile.webp" },
+	{ rel: "preload", as: "image", href: "/ivan_mijic.webp" },
+
 ];
 
 export const Layout = ({ children }: PropsWithChildren) => (
