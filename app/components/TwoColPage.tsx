@@ -1,5 +1,5 @@
 import { memo, type ReactNode, type JSX, type SVGProps } from "react";
-import { Link, NavLink, useParams } from "react-router";
+import { NavLink, useParams } from "react-router";
 import clsx from "clsx";
 import {
 	ButtonSquircleContainer,
@@ -7,9 +7,8 @@ import {
 	TallSquircleContainer,
 	WideSquircleContainer,
 } from "./assets";
-import { useIsMobile, useTranslate } from "~/hooks";
+import { useIsMobile } from "~/hooks";
 import { SiteConfig } from "~/config";
-import { useLocation } from "react-router";
 import { LanguageToggleButton } from "./ui";
 import { NavHelper } from "~/helpers";
 
@@ -38,7 +37,6 @@ const TwoColPage = memo(function TwoColPage({
 
 	const { lang: langParam } = useParams();
 	const lang = (langParam === "ba" || langParam === "en") ? langParam : "en";
-
 
 	return (
 		<>
@@ -97,7 +95,7 @@ const TwoColPage = memo(function TwoColPage({
 
 				}
 				{!isMobile && <nav className="mt-6" aria-label="Primary">
-					<ul className="grid grid-cols-3 w-1/2 gap-y-12 gap-x-6 pl-24">
+					<ul className="grid grid-cols-3 w-[60%] gap-y-12 gap-x-6 pl-24">
 						{SiteConfig.useNavElements().map(({ label, path, icon: Icon, accent, special }) => {
 							const to = NavHelper.normalize(`/${lang}${path ? `/${path}` : ""}`);
 
