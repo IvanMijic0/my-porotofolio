@@ -48,7 +48,7 @@ const TwoColPage = memo(function TwoColPage({
 					    lg:before:opacity-0 before:opacity-100
 
 					    after:content-[''] after:pointer-events-none after:absolute after:inset-0
-					    after:bg-black/50 lg:after:opacity-0 after:opacity-100
+					    after:bg-black/50 lg:after:opacity-0 after:opacity-100 after:h-full
 
 					    after:-z-10 before:-z-10
 					  `}
@@ -60,7 +60,7 @@ const TwoColPage = memo(function TwoColPage({
 							{left}
 						</div>
 					</TallSquircleContainer>
-					: <div className={clsx("min-w-0 w-full", className)}>
+					: <div className={clsx("min-w-0 w-full min-h-[calc(100svh-31rem)] flex", className)}>
 						{left}
 					</div>
 				}
