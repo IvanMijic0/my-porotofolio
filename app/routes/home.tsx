@@ -110,9 +110,9 @@ const HomeRight = memo(function HomeRight() {
 					{t("home.engineering", "Engineering done right")}
 				</span>
 			</h1>
-			<h3 className="text-md mt-4 lg:mt-0 lg:text-3xl w-28 lg:w-auto font-extralight lg:font-light lg:pl-1">
+			<h2 className="text-md mt-4 lg:mt-0 lg:text-3xl w-28 lg:w-auto font-extralight lg:font-light lg:pl-1">
 				{t("home.subtitle", "Medior Software Engineer with CTO Experience")}
-			</h3>
+			</h2>
 		</section>
 	);
 });

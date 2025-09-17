@@ -8,7 +8,7 @@ import clsx from "clsx";
 import { ButtonSquircleContainer, Logo } from "~/components/assets";
 import { NavHelper } from "~/helpers";
 
-const LOADER_MS = 800;
+const LOADER_MS = 100;
 
 const Layout = () => {
 	const isMobile = useIsMobile("lg");

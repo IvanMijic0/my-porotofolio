@@ -10,11 +10,20 @@ import {
 import type { Route } from "./+types/root";
 import { type PropsWithChildren } from "react";
 
-import "./app.css";
+import appCssUrl from "./app.css?url";
+
 import { I18nProvider } from "./providers";
 
 export const links: Route.LinksFunction = () => [
-	{ rel: "preload", as: "font", href: "/fonts/roboto.woff2", type: "font/woff2", crossOrigin: "anonymous" },
+	{ rel: "preload", as: "style", href: appCssUrl },
+	{ rel: "stylesheet", href: appCssUrl },
+	{
+		rel: "preload",
+		as: "font",
+		href: "/fonts/roboto.woff2",
+		type: "font/woff2",
+		crossOrigin: "anonymous",
+	},
 ];
 
 export const Layout = ({ children }: PropsWithChildren) => (
@@ -37,9 +46,12 @@ export const Layout = ({ children }: PropsWithChildren) => (
 const App = () => {
 	const { lang: langParam } = useParams();
 	const lang = langParam === "ba" ? "ba" : "en";
-
-	return <I18nProvider lang={lang}><Outlet /></I18nProvider>;
-}
+	return (
+		<I18nProvider lang={lang}>
+			<Outlet />
+		</I18nProvider>
+	);
+};
 export default App;
 
 export const ErrorBoundary = ({ error }: Route.ErrorBoundaryProps) => {

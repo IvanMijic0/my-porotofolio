@@ -43,14 +43,17 @@ const TwoColPage = memo(function TwoColPage({
 	return (
 		<>
 			<aside
-				className="
-					    col-span-12 order-2 lg:order-1 lg:col-span-5 relative
-					    before:content-[''] before:absolute before:inset-x-0 before:top-0
+				className={`
+					    col-span-12 order-2 lg:order-1 lg:col-span-5 relative overflow-hidden
+					    before:content-[''] before:pointer-events-none before:absolute before:inset-x-0 before:top-0
 					    before:h-20 before:bg-gradient-to-b before:from-black before:to-transparent
-					    after:content-[''] after:absolute after:inset-0 after:bg-black/30
+					    lg:before:opacity-0 before:opacity-100
+
+					    after:content-[''] after:pointer-events-none after:absolute after:inset-0
+					    after:bg-black/50 lg:after:opacity-0 after:opacity-100
+
 					    after:-z-10 before:-z-10
-					    lg:before:hidden lg:after:hidden
-					"
+					  `}
 				aria-labelledby="aside-title"
 			>
 				{!isMobile
@@ -63,7 +66,7 @@ const TwoColPage = memo(function TwoColPage({
 						{left}
 					</div>
 				}
-			</aside>
+			</aside >
 			<main
 				className="
 					    col-span-12 order-1 py-6
@@ -184,11 +187,9 @@ const TwoColPage = memo(function TwoColPage({
 				>
 					<img
 						src="/ivan_mijic.webp"
-						alt=""
-						role="presentation"
-						loading="lazy"
+						alt="Ivan Mijić — Software Engineer"
 						decoding="async"
-						fetchPriority="low"
+						fetchPriority="high"
 						className="h-[25rem] lg:h-[calc(50vh-4rem)] object-cover w-auto select-none"
 					/>
 				</div>
