@@ -78,6 +78,8 @@ const Layout = () => {
 					speed={1}
 					scale={0.5}
 					noiseIntensity={0.4}
+					wobble={0.075}   // tweak 0.06–0.09 for more/less motion
+					detail={1.0}
 				/>
 			</div>
 			<div className="relative z-10 h-full w-full">
