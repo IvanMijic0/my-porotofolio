@@ -7,7 +7,7 @@ import {
 	TallSquircleContainer,
 	WideSquircleContainer,
 } from "./assets";
-import { useIsMobile } from "~/hooks";
+import { useIsMobile, useTranslate } from "~/hooks";
 import { SiteConfig } from "~/config";
 import { LanguageToggleButton } from "./ui";
 import { NavHelper } from "~/helpers";
@@ -33,6 +33,7 @@ const TwoColPage = memo(function TwoColPage({
 	right,
 	className,
 }: Props) {
+	const { t } = useTranslate();
 	const isMobile = useIsMobile('lg');
 
 	const { lang: langParam } = useParams();
@@ -67,10 +68,11 @@ const TwoColPage = memo(function TwoColPage({
 			</aside >
 			<main
 				className="
-					    col-span-12 order-1 py-6
-					    lg:order-2 lg:col-span-7 lg:px-12 lg:py-6
-					    flex lg:flex-col justify-between gap-2
+					    col-span-12 order-1
+					    lg:order-2 lg:col-span-7 lg:px-12 py-6 xl:py-3 2xl:py-6
+					    flex lg:flex-col justify-between gap-6
 					    relative min-h-0 overflow-hidden
+
 					    after:content-[''] after:absolute after:inset-x-0 after:bottom-0
 					    after:h-20 after:bg-gradient-to-t after:from-black after:to-transparent
 					    lg:after:hidden
@@ -94,90 +96,93 @@ const TwoColPage = memo(function TwoColPage({
 					</div>
 
 				}
-				{!isMobile && <nav className="mt-6 z-50" aria-label="Primary">
-					<ul className="grid grid-cols-3 w-[60%] gap-y-12 gap-x-6 pl-24">
-						{SiteConfig.useNavElements().map(({ label, path, icon: Icon, accent, special }) => {
-							const to = NavHelper.normalize(`/${lang}${path ? `/${path}` : ""}`);
+				{!isMobile &&
+					<nav className="z-50" aria-label="Primary">
+						<ul className="grid grid-cols-3 w-[60%] gap-y-8 gap-x-6 pl-24">
+							{SiteConfig.useNavElements().map(({ label, path, icon: Icon, accent, special }) => {
+								const to = NavHelper.normalize(`/${lang}${path ? `/${path}` : ""}`);
 
-							return (
-								<li key={label} className="flex flex-col gap-6 items-center">
-									<NavLink
-										to={to}
-										end={path === ""}
-										className="inline-flex items-center justify-center"
-									>
-										{({ isActive }) => {
-											const isSpecial = special && isActive
+								return (
+									<li key={label} className="flex flex-col gap-6 items-center">
+										<NavLink
+											to={to}
+											end={path === ""}
+											className="inline-flex items-center justify-center"
+										>
+											{({ isActive }) => {
+												const isSpecial = special && isActive
 
-											return (
-												<ButtonSquircleContainer
-													fillOpacity={isActive ? 1 : accent ? 0.8 : 1}
-													fill={
-														isSpecial
-															? "#FF601C"
-															: isActive
-																? "#FCFCFC"
-																: accent
-																	? "#FF601C80"
-																	: undefined
-													}
-												>
-													<Icon
-														className={clsx(
-															"w-8 h-8",
+												return (
+													<ButtonSquircleContainer
+														fillOpacity={isActive ? 1 : accent ? 0.8 : 1}
+														fill={
 															isSpecial
-																? "text-white"
+																? "#FF601C"
 																: isActive
-																	? "text-black"
+																	? "#FCFCFC"
 																	: accent
-																		? "text-primary"
-																		: "text-unfocus"
-														)}
-														aria-hidden="true"
-														focusable="false"
-													/>
-													<span className="sr-only">{label}</span>
-												</ButtonSquircleContainer>
-											);
-										}}
-									</NavLink>
-									<NavLink to={to} end={path === ""}>
-										{({ isActive }) => (
-											<p
-												className={clsx(
-													"text-lg text-center",
-													(label.includes("Connect") || label.includes("Work")) && isActive
-														? "text-accent"
-														: isActive
-															? "text-[#BDBDBD]"
-															: accent
-																? "text-accent/80"
-																: "text-unfocus"
-												)}
-											>
-												{label.includes("Connect") ? (
-													<>
-														Let&apos;s<br />Connect
-													</>
-												) : label.includes("Work") ? (
-													<>
-														View<br />Work
-													</>
-												) : (
-													label
-												)}
-											</p>
-										)}
-									</NavLink>
-								</li>
-							);
-						})}
-						<li className="flex flex-col gap-6 items-center">
-							<LanguageToggleButton />
-							<p className="text-lg text-center text-unfocus">Language</p>
-						</li>
-					</ul>
-				</nav>
+																		? "#FF601C80"
+																		: undefined
+														}
+													>
+														<Icon
+															className={clsx(
+																"w-8 h-8",
+																isSpecial
+																	? "text-white"
+																	: isActive
+																		? "text-black"
+																		: accent
+																			? "text-primary"
+																			: "text-unfocus"
+															)}
+															aria-hidden="true"
+															focusable="false"
+														/>
+														<span className="sr-only">{label}</span>
+													</ButtonSquircleContainer>
+												);
+											}}
+										</NavLink>
+										<NavLink to={to} end={path === ""}>
+											{({ isActive }) => (
+												<p
+													className={clsx(
+														"text-lg text-center",
+														(label.includes("Connect") || label.includes("Work")) && isActive
+															? "text-accent"
+															: isActive
+																? "text-[#BDBDBD]"
+																: accent
+																	? "text-accent/80"
+																	: "text-unfocus"
+													)}
+												>
+													{label.includes("Connect") ? (
+														<>
+															Let&apos;s<br />Connect
+														</>
+													) : label.includes("Work") ? (
+														<>
+															View<br />Work
+														</>
+													) : (
+														label
+													)}
+												</p>
+											)}
+										</NavLink>
+									</li>
+								);
+							})}
+							<li className="flex flex-col gap-6 items-center">
+								<LanguageToggleButton />
+								<p className="text-lg text-center text-unfocus">
+									{t("nav.language", "Language")}
+								</p>
+							</li>
+						</ul>
+					</nav>
 				}
 				<div
 					aria-hidden

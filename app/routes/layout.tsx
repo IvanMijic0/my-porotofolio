@@ -2,15 +2,16 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Outlet, useLocation, useParams, NavLink } from "react-router";
 import { HamburgerButton, LanguageToggleButton, Modal, ScrollUpOnMobile, Silk } from "~/components";
-import { useIsMobile } from "~/hooks";
+import { useIsMobile, useTranslate } from "~/hooks";
 import { SiteConfig } from "~/config";
 import clsx from "clsx";
 import { ButtonSquircleContainer, Logo } from "~/components/assets";
 import { NavHelper } from "~/helpers";
 
-const LOADER_MS = 200;
+const LOADER_MS = 300;
 
 const Layout = () => {
+	const { t } = useTranslate();
 	const isMobile = useIsMobile("lg");
 	const location = useLocation();
 
@@ -49,7 +50,7 @@ const Layout = () => {
 	const shouldRenderOutlet = !isMobile || (!isLoading && location.pathname === visiblePath);
 
 	return (
-		<div className="relative w-screen h-screen">
+		<div className="relative">
 			<AnimatePresence>
 				{isLoading && (
 					<motion.div
@@ -173,7 +174,9 @@ const Layout = () => {
 					})}
 					<li className="flex flex-col gap-4 items-center">
 						<LanguageToggleButton width={60} height={60} />
-						<p className="text-sm text-center text-unfocus">Language</p>
+						<p className="text-sm text-center text-unfocus">
+							{t("nav.language", "Language")}
+						</p>
 					</li>
 				</ul>
 			</Modal>

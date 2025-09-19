@@ -10,21 +10,21 @@ const HomeLeft = memo(function HomeLeft() {
 		<section
 			id="expertise"
 			aria-labelledby="expertise-title"
-			className="w-full flex flex-col gap-12 justify-start lg:py-36 pt-8 pb-12 px-4 lg:px-10 items-start"
+			className="w-full flex flex-col gap-12 justify-start lg:py-32 pt-8 pb-12 px-4 lg:px-10 items-start"
 		>
 			<h2 id="expertise-title" className="text-4xl">
 				{t("home.expertiseTitle", "Expertise")}
 			</h2>
 			<div className='w-full flex justify-center lg:block'>
-				<ul className="lg:px-20 grid grid-cols-2 gap-12 lg:gap-28">
+				<ul className="lg:px-20 grid grid-cols-2 gap-12 lg:gap-16">
 					<li>
 						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
 							<Laravel
-								className="w-20 h-20 lg:w-24 lg:h-24 text-[#FF2D20]"
+								className="w-20 h-20 text-[#FF2D20]"
 								aria-hidden="true"
 								focusable="false"
 							/>
-							<figcaption className="font-light text-lg lg:text-2xl">
+							<figcaption className="font-light text-lg lg:text-xl">
 								Laravel
 							</figcaption>
 						</figure>
@@ -33,9 +33,9 @@ const HomeLeft = memo(function HomeLeft() {
 					<li>
 						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
 							<Springboot
-								className="w-20 h-20 lg:w-24 lg:h-24"
+								className="w-20 h-20"
 								aria-hidden="true" focusable="false" />
-							<figcaption className="font-light text-lg lg:text-2xl whitespace-nowrap">
+							<figcaption className="font-light text-lg lg:text-xl whitespace-nowrap">
 								Spring Boot
 							</figcaption>
 						</figure>
@@ -44,18 +44,18 @@ const HomeLeft = memo(function HomeLeft() {
 					<li>
 						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
 							<React
-								className="w-20 h-20 lg:w-24 lg:h-24"
+								className="w-20 h-20"
 								aria-hidden="true" focusable="false" />
-							<figcaption className="font-light text-lg lg:text-2xl">React</figcaption>
+							<figcaption className="font-light text-lg lg:text-xl">React</figcaption>
 						</figure>
 					</li>
 
 					<li>
 						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
 							<Redpanda
-								className="w-20 h-20 lg:w-24 lg:h-24"
+								className="w-20 h-20"
 								aria-hidden="true" focusable="false" />
-							<figcaption className="font-light text-lg lg:text-2xl whitespace-nowrap">
+							<figcaption className="font-light text-lg lg:text-xl whitespace-nowrap">
 								Redpanda
 							</figcaption>
 						</figure>
@@ -64,18 +64,18 @@ const HomeLeft = memo(function HomeLeft() {
 					<li>
 						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
 							<Hadoop
-								className="w-20 h-20 lg:w-24 lg:h-24"
+								className="w-20 h-20"
 								aria-hidden="true" focusable="false" />
-							<figcaption className="font-light text-lg lg:text-2xl">Hadoop</figcaption>
+							<figcaption className="font-light text-lg lg:text-xl">Hadoop</figcaption>
 						</figure>
 					</li>
 
 					<li>
 						<figure className="flex items-center gap-6 lg:gap-8 flex-col">
 							<Elasticsearch
-								className="w-14 h-20 lg:w-24 lg:h-24"
+								className="w-14 h-20"
 								aria-hidden="true" focusable="false" />
-							<figcaption className="font-light text-lg lg:text-2xl whitespace-nowrap">
+							<figcaption className="font-light text-lg lg:text-xl whitespace-nowrap">
 								Elasticsearch
 							</figcaption>
 						</figure>
